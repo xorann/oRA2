@@ -59,7 +59,7 @@ Leader\Durability.lua
 Leader\Resist.lua
 Leader\Invite.lua
 Leader\RaidWarn.lua
-Leader\GroupSwap.lua
+Leader\GroupSetup.lua
 
 Optional\MainTank.lua
 Optional\PlayerTarget.lua
