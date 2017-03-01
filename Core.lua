@@ -181,7 +181,7 @@ oRA:RegisterDB("oRADB", "oRADBPerChar")
 oRA:RegisterDefaults("profile", oRA.defaults)
 oRA:RegisterChatCommand({"/ora", "/oRA"}, oRA.consoleOptions )
 
-local isDebugging = true
+local isDebugging = false
 function oRA:IsDebugging()
     return isDebugging
 end

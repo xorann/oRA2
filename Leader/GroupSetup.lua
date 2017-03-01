@@ -32,22 +32,22 @@ L:RegisterTranslations("enUS", function() return {
             
     ["Group Setup: Please provide an ID"] = true,
     ["Group Setup saved with id: "] = true,
-    ["no information for player %s available"] = true,
-    ["Group Setup |cff81d11f%s|r restored"] = true,
+    ["No information for player |cff2573bc%s|r available."] = true,
+    ["Group Setup |cff81d11f%s|r restored."] = true,
     ["Setup %s"] = true,
     ["You are not the raid leader or a raid assistant which will be necessary to restore a setup."] = true,
     ["You need to be the raid leader or an assitant to restore a group setup."] = true,
-	["Could not restore setup |cffff0000%s|r"] = true,
-    ["Restoring setup |cfffca820%s|r"] = true,
+	["Could not restore setup |cffff0000%s|r."] = true,
+    ["Restoring setup |cfffca820%s|r."] = true,
 } end)
 
 L:RegisterTranslations("deDE", function() return {
     ["Group Setup"] = "Gruppenaufstellung",
     ["groupsetup"] = "gruppenaufstellung", -- console
-    ["Options for the group setup plugin."] = "Optionen für das Gruppenaufstellung-Plugin",
+    ["Options for the group setup plugin."] = "Optionen für das Gruppenaufstellung-Plugin.",
     ["save"] = "speichern", -- console
     ["Save"] = "Speichern",
-    ["Save current group setup."] = "Aktuelle Gruppenaufstellung speichern",
+    ["Save current group setup."] = "Aktuelle Gruppenaufstellung speichern.",
     ["<id>"] = "<id>",
             
     ["restore"] = "wiederherstellen",
@@ -60,13 +60,13 @@ L:RegisterTranslations("deDE", function() return {
             
     ["Group Setup: Please provide an ID"] = "Gruppenaufstellung: Bitte gib eine ID an.",
     ["Group Setup saved with id: "] = "Gruppenaufstellung gespeichert mit der id: ",
-    ["no information for player %s available"] = "keine Informationen für den Spieler %s verfügbar",
-    ["Group Setup |cff81d11f%s|r restored"] = "Gruppenaufstellung |cff81d11f%s|r wiederhergestellt",
+    ["No information for player |cff2573bc%s|r available."] = "keine Informationen für den Spieler |cff2573bc%s|r verfügbar.",
+    ["Group Setup |cff81d11f%s|r restored."] = "Gruppenaufstellung |cff81d11f%s|r wiederhergestellt.",
     ["Setup %s"] = "Aufstellung %s",
     ["You are not the raid leader or a raid assistant which will be necessary to restore a setup."] = "Du bist nicht der Schlachtzugsleiter oder ein Assistent, was notwendig sein wird um eine Aufstellung wiederherstellen zu können.",
     ["You need to be the raid leader or an assitant to restore a group setup."] = "Du musst der Schlachtzugsleiter oder ein Assistent sein, um eine Gruppenaufstellung wiederherstellen zu können.",
-	["Could not restore setup |cffff0000%s|r"] = "Setup |cffff0000%s|r konnte nicht wiederhergestellt werden.",
-    ["Restoring setup |cfffca820%s|r"] = "Setup |cfffca820%s|r wird wiederhergestellt."
+	["Could not restore setup |cffff0000%s|r."] = "Aufstellung |cffff0000%s|r konnte nicht wiederhergestellt werden.",
+    ["Restoring setup |cfffca820%s|r."] = "Aufstellung |cfffca820%s|r wird wiederhergestellt."
 } end)
 
 
@@ -167,7 +167,7 @@ function oRAGroupSetup:Clear(id)
         tmp = {}
         for k, v in pairs(self.db.profile.idList) do
             if v ~= id then
-                tmp[k] = v
+                table.insert(tmp, v)
             end
         end
         self.db.profile.idList = tmp
@@ -183,8 +183,6 @@ end
 function oRAGroupSetup:Save(id)
     if not id or id == "" then
         oRA:Print(L["Group Setup: Please provide an ID"])
-    --[[elseif self.db.profile.database[id] then
-        oRA:Print("Group Setup: ID already exists")]]
     else
         local setup = {}
         for i=1, GetNumRaidMembers() do
@@ -212,7 +210,6 @@ end
 -- RESTORE UTILITY FUNCTIONS
 --------------------------------------------------- ]]
 local unknownRaidIds = {}
-local movedId = {}
 local restoreInProgress = false
 
 local function myGetRaidRosterInfo(index)
@@ -233,8 +230,6 @@ function printRoster()
         [1] = {}, [2] = {}, [3] = {}, [4] = {}, [5] = {}, [6] = {}, [7] = {}, [8] = {},
     }
     for i=1, GetNumRaidMembers() do
-        --local name, rank, subgroup = myGetRaidRosterInfo(i)
-        --table.insert(tmp[subgroup], name)
         table.insert(tmp[oRAGroupSetup.db.profile.tmpRaidRoster[i].subgroup], oRAGroupSetup.db.profile.tmpRaidRoster[i].name)
     end
     
@@ -272,10 +267,12 @@ local function findPlayerInDesiredSubgroup(subgroup, rosterId)
         end
     end
     
-    for i=1, table.getn(unknownRaidIds) do
-        local _, _, group = myGetRaidRosterInfo(unknownRaidIds[i])
+    oRA:DebugMessage(table.getn(unknownRaidIds) .. " unknown players")
+    for rosterId, v in pairs(unknownRaidIds) do
+        local _, _, group = myGetRaidRosterInfo(rosterId)
+        oRA:DebugMessage(" unknown raid Id " .. rosterId .. " group " .. group)
         if group == subgroup then
-            return unknownRaidIds[i]
+            return rosterId
         end
     end
     
@@ -283,7 +280,7 @@ local function findPlayerInDesiredSubgroup(subgroup, rosterId)
 end
 local function movePlayerToSubgroup(name, subgroup, rosterId, subgroupDistribution)
     if subgroupDistribution[subgroup] >= 5 then -- subgroup is full: switch players
-        if rosterId < GetNumRaidMembers() - 1 then
+        if rosterId < GetNumRaidMembers() +1 then
             -- find player of the desired subgroup
             local switcherId = findPlayerInDesiredSubgroup(subgroup, rosterId)
             if switcherId then
@@ -291,21 +288,11 @@ local function movePlayerToSubgroup(name, subgroup, rosterId, subgroupDistributi
                 if switcherName then
                     local _, _, currentGroup = myGetRaidRosterInfo(rosterId) -- save current group
                     
-                    if not movedId[rosterId] and not movedId[switcherId] then
-                        --SendChatMessage(rosterId .. " --> " .. switcherId, "RAID")
-                        SwapRaidSubgroup(rosterId, switcherId) -- swap players
-                        local n,r,g = GetRaidRosterInfo(rosterId)
-                        oRAGroupSetup.db.profile.tmpRaidRoster[rosterId].subgroup = switcherGroup -- update raid roster info
-                        oRAGroupSetup.db.profile.tmpRaidRoster[switcherId].subgroup = currentGroup -- update raid roster info
+                    SwapRaidSubgroup(rosterId, switcherId) -- swap players
+                    oRAGroupSetup.db.profile.tmpRaidRoster[rosterId].subgroup = switcherGroup -- update raid roster info
+                    oRAGroupSetup.db.profile.tmpRaidRoster[switcherId].subgroup = currentGroup -- update raid roster info
 
-                        movedId[rosterId] = true -- do not move the same player twice
-                        movedId[switcherId] = true -- do not move the same player twice
-
-                        --oRA:DebugMessage("  " .. name .. "(" .. switcherGroup .. ")" .. "=" .. oRAGroupSetup.db.profile.tmpRaidRoster[rosterId].name .. "(" .. oRAGroupSetup.db.profile.tmpRaidRoster[rosterId].subgroup .. ")/" .. g .. " " .. switcherName .. "(" .. currentGroup .. ")" .. "=" .. oRAGroupSetup.db.profile.tmpRaidRoster[switcherId].name .. "(" .. oRAGroupSetup.db.profile.tmpRaidRoster[switcherId].subgroup .. ")")
-                        oRA:DebugMessage("  switched with " .. switcherName .. "(" .. switcherId .. ") updated groups " .. switcherGroup .. "/" .. currentGroup)
-
-                        --printRoster()
-                    end
+                    oRA:DebugMessage("  switched with " .. switcherName .. "(" .. switcherId .. ") updated groups " .. switcherGroup .. "/" .. currentGroup)
                 else
                     oRA:DebugMessage("  can't switch. ID " .. switcherId .. " does not exist")
                 end
@@ -321,6 +308,7 @@ local function movePlayerToSubgroup(name, subgroup, rosterId, subgroupDistributi
         
         -- move player
         SetRaidSubgroup(rosterId, subgroup)
+        oRA:DebugMessage("  moved " .. rosterId .. " to subgroup " .. subgroup)
         
         oRAGroupSetup.db.profile.tmpRaidRoster[rosterId].subgroup = subgroup -- update raid roster info
     end
@@ -345,8 +333,6 @@ end
 local function tryRestore(id)
     local setup = {}
     local subgroupDistribution = {}
-    unknownRaidIds = {}
-    movedId = {}
 
     oRAGroupSetup.db.profile.tmpRaidRoster = getRaidRoster() -- save it for later use
     setup = oRAGroupSetup.db.profile.database[id]
@@ -359,8 +345,10 @@ local function tryRestore(id)
 		if actions < maxActions then
 			local name, _, subgroup = myGetRaidRosterInfo(i)
 			if not setup[name] then -- unknown player
-                table.insert(unknownRaidIds, i)
-				oRA:Print(string.format(L["no information for player %s available"], name))     
+                if not unknownRaidIds[i] then
+                    unknownRaidIds[i] = true
+				    oRA:Print(string.format(L["No information for player |cff2573bc%s|r available."], name))
+                end
 			elseif setup[name] ~= subgroup then -- player in wrong group
 				oRA:DebugMessage(i .. ": " .. name .. " " .. subgroup .. " to " .. setup[name])
 				subgroupDistribution = movePlayerToSubgroup(name, setup[name], i, subgroupDistribution)
@@ -388,7 +376,7 @@ function oRAGroupSetup:checkRestore(id)
         tries = 0
 		offset = 0
 		
-		oRA:Print(string.format(L["Could not restore setup |cffff0000%s|r"], id))
+		oRA:Print(string.format(L["Could not restore setup |cffff0000%s|r."], id))
 		
         return
     end
@@ -407,7 +395,7 @@ function oRAGroupSetup:checkRestore(id)
         end
     end
     
-    oRA:Print(string.format(L["Group Setup |cff81d11f%s|r restored"], id))
+    oRA:Print(string.format(L["Group Setup |cff81d11f%s|r restored."], id))
     oRA:DebugMessage("-----------------------------")
     tries = 0
 	offset = 0
@@ -420,7 +408,8 @@ function oRAGroupSetup:Restore(id)
         return
     end
     
-    oRA:Print(string.format(L["Restoring setup |cfffca820%s|r"], id))
+    oRA:Print(string.format(L["Restoring setup |cfffca820%s|r."], id))
+    unknownRaidIds = {}
     tryRestore(id)
 end
 
