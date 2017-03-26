@@ -28,6 +28,20 @@ L:RegisterTranslations("enUS", function() return {
 	maintankdies = "^([^%s]+) dies%.$",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["MainTank"] = "Основной танк (MT)",
+	["Options for the maintanks."] = "Опции для MT.",
+	["The local maintank list has been refreshed."] = "Локальный список MT был обновлен.",
+	["Refresh Maintanks"] = "Обновить MT",
+	["Refresh the local maintank list."] = "Обновление локального списка MT.",
+	["Participant/MainTank"] = "Участник/MT",
+	["Notify deaths"] = "Уведомления смерти",
+	["Notifies you when a main tank dies."] = "Уведомляет вас, когда MT умирает.",
+	["Tank %s has died!"] = "Танк %s умер!",
+
+	maintankdies = "^([^%s]+) погибает%.$",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["MainTank"] = "메인탱커",

@@ -22,6 +22,15 @@ L:RegisterTranslations("enUS", function() return {
 	["Participant/Assist"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["'|c00FFFFFF%s|r' wants you to assist him/her.\nPress Assist to assist."] = "'|c00FFFFFF%s|r' хочет, чтобы вы помогли ему/ей.\nНажмите Помощь, чтобы помочь.",
+	["Assist"] = "Помощь",
+	["Options for assist."] = "Опции для помощи.",
+	["Sound"] = "Звук",
+	["Toggle an audio warning upon an assist request."] = "Вкл./Выкл. звукового предупреждения по запросу помощи.",
+	["Participant/Assist"] = "Участник/Помощь",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["'|c00FFFFFF%s|r' wants you to assist him/her.\nPress Assist to assist."] = "'|c00FFFFFF%s|r'님이 당신이 지원해주기를 원합니다.\n지원하기 위해서는 지원 버튼을 누르세요.",
@@ -30,7 +39,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Sound"] = "소리",
 	["Toggle an audio warning upon an assist request."] = "지원 요청이 들어 왔을 때의 경고음을 토글합니다.",
 	["Participant/Assist"] = "부분/지원",
-} end )
+	} end )
 
 L:RegisterTranslations("zhCN", function() return {
 	["'|c00FFFFFF%s|r' wants you to assist him/her.\nPress Assist to assist."] = "'|c00FFFFFF%s|r' 希望你协助他的目标r。\n点击协助来允许。",

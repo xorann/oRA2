@@ -18,6 +18,11 @@ L:RegisterTranslations("enUS", function() return {
 	["Participant/Resist"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for resistance checks."] = "Опции для проверки сопротивлений.",
+	["Participant/Resist"] = "Участник/Сопротивление",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Options for resistance checks."] = "저항 확인 설정",

@@ -20,8 +20,13 @@ L:RegisterTranslations("enUS", function() return {
 	
 } end )
 
-L:RegisterTranslations("koKR", function() return {
+L:RegisterTranslations("ruRU", function() return {
+	["Participant/Durability"] = "Участник/Прочность",
+	["Options for durability checks."] = "Опции для проверки прочности.",
+} end )
 
+L:RegisterTranslations("koKR", function() return {
+	
 	["Participant/Durability"] = "부분/내구도",
 	["Options for durability checks."] = "내구도 설정",
 	

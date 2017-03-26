@@ -21,6 +21,13 @@ L:RegisterTranslations("enUS", function() return {
 	["Participant/CoolDown"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for cooldowns."] = "Опции для перезарядки.",
+	["gain Soulstone Resurrection"] = "gain Soulstone Resurrection",
+	["gains Soulstone Resurrection"] = "gains Soulstone Resurrection",
+	["Participant/CoolDown"] = "Участник/Перезарядка",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	["gain Soulstone Resurrection"] = "Ihr bekommt 'Seelenstein%-Auferstehung'",
 	["gains Soulstone Resurrection"] = "bekommt 'Seelenstein%-Auferstehung'",

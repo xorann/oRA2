@@ -20,6 +20,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Sound"] = true,
 	["Toggle an audio warning upon a ready check or vote."] = true,
 	["Ready"] = true,
+	["Ready_1"] = "Ready", -- need for ruRU locale
 	["Not Ready"] = true,
 	["Are you Ready?"] = true,
 	["Yes"] = true,
@@ -34,12 +35,31 @@ L:RegisterTranslations("enUS", function() return {
 	["Closing Check"] = true,
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for ready checks and votes."] = "Опции для проверки готовности и голосования.",
+	["Sound"] = "Звук",
+	["Toggle an audio warning upon a ready check or vote."] = "Вкл./Выкл. звукового предупреждения при проверке готовности или голосования.",
+	["Ready"] = "Готовность",
+	["Ready_1"] = "Готов",
+	["Not Ready"] = "Не готов",
+	["Are you Ready?"] = "Вы готовы?",
+	["Yes"] = "Да",
+	["No"] = "Нет",
+	["Ready Check"] = "Проверка готовности",
+	["Vote"] = "Голосование",
+	["Perform a vote."] = "Провести голосование.",
+	["Participant/Ready"] = "Участник/Готовность",
+	["Closing Vote"] = "Завершить голосование",
+	["Closing Check"] = "Завершить проверку",
+} end)
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Options for ready checks and votes."] = "준비 확인과 투표 설정",
 	["Sound"] = "소리",
 	["Toggle an audio warning upon a ready check or vote."] = "투표나 준비 확인시 경고음 토글",
 	["Ready"] = "준비완료",
+	["Ready_1"] = "준비완료",
 	["Not Ready"] = "준비안됨",
 	["Are you Ready?"] = "준비 되셨습니까?",
 	["Yes"] = "예",
@@ -61,6 +81,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Sound"] = "声音",
 	["Toggle an audio warning upon a ready check or vote."] = "准备检查或投票时发声",
 	["Ready"] = "准备就绪",
+	["Ready_1"] = "准备就绪",
 	["Not Ready"] = "未准备好",
 	["Are you Ready?"] = "准备好了么？",
 	["Yes"] = "是",
@@ -83,6 +104,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Sound"] = "聲音",
 	["Toggle an audio warning upon a ready check or vote."] = "就位確認與投票時播放音效",
 	["Ready"] = "已就緒",
+	["Ready_1"] = "已就緒",
 	["Not Ready"] = "未就緒",
 	["Are you Ready?"] = "準備好了嗎？",
 	["Yes"] = "是",
@@ -105,6 +127,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Sound"] = "Son",
 	["Toggle an audio warning upon a ready check or vote."] = "Joue ou non un avertissement sonore lors d'un appel ou d'un vote.",
 	["Ready"] = "Pr\195\170t",
+	["Ready_1"] = "Pr\195\170t",
 	["Not Ready"] = "Pas pr\195\170t",
 	["Are you Ready?"] = "\195\138tes-vous pr\195\170t ?",
 	["Yes"] = "Oui",
@@ -262,7 +285,7 @@ end
 function oRAPReady:ShowReady( author )
 	self.frames.cheader:SetText(L["Ready Check"])
 	self.frames.cinfo:SetText("|cffffffff"..author.. "|r: " .. L["Are you Ready?"] )
-	self.frames.leftbuttontext:SetText(L["Ready"])
+	self.frames.leftbuttontext:SetText(L["Ready_1"])
 	self.frames.rightbuttontext:SetText(L["Not Ready"])
 
 	self.frames.leftbutton:SetScript("OnClick",

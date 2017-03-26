@@ -31,6 +31,22 @@ L:RegisterTranslations("enUS", function() return {
 	["Request Assist"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Assist"] = "Помощь",
+	["Options for assist."] = "Опции для помощи.",
+	["Leader/Assist"] = "Лидер/Помощь",
+	["Tank %s. not available."] = "Танк %s недоступен.",
+	["You need to have a target to assign it to a tank."] = "Вы должны иметь цель, чтобы назначить ее к танку.",
+	["Assigning %s to %s."] = "Назначение %s к %s.",
+	["No free tanks found."] = "Свободных танков не найдено.",
+	["Assign Target"] = "Назначить цель",
+	["Assign a target to a maintank."] = "Назначение цели к главному танку (MT).",
+	["Assign Maintank"] = "Назначить MT",
+	["First Free"] = "Первый свободный",
+	["Assign the first free MainTank."] = "Назначить первого свободного MT.",
+	["Request Assist"] = "Запрос помощи",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Assist"] = "지원",

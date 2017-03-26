@@ -2,6 +2,7 @@
 ## Title: oRA2 |cff7fff7f -Ace2-|r
 ## Title-koKR: |CFF6666CC|CFFFFFFFFo|CFF6666CCRA2 |cff7fff7f -Ace2-|r
 ## Notes: A CT_RaidAssist alternative
+## Notes-ruRU: Альтернатива CT_RaidAssist
 ## Notes-koKR: 공격대 도우미(CT_RaidAssist) 애드온의 대체 애드온
 ## Notes-zhCN: CT_RaidAssist外的另一个选择。
 ## Notes-zhTW: 除了 CT_RaidAssist 以外的另一個選擇。
@@ -35,6 +36,7 @@ Libs\PaintChips-2.0\PaintChips-2.0.lua
 Libs\Candybar-2.0\CandyBar-2.0.lua
 Libs\BabbleSpell-2.2\Babble-Spell-2.2.lua
 Libs\Surface-1.0\Surface-1.0.lua
+Libs\Waterfall-1.0\Waterfall-1.0.lua
 
 LoadOnDemand.lua
 Core.lua
@@ -50,6 +52,7 @@ Participant\Assist.lua
 Participant\Durability.lua
 Participant\Resurrection.lua
 Participant\Buff.lua
+Participant\Latency.lua
 
 Leader\Assist.lua
 Leader\Ready.lua
@@ -60,6 +63,7 @@ Leader\Resist.lua
 Leader\Invite.lua
 Leader\RaidWarn.lua
 Leader\GroupSetup.lua
+Leader\Latency.lua
 
 Optional\MainTank.lua
 Optional\PlayerTarget.lua

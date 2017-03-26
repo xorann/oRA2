@@ -24,6 +24,14 @@ L:RegisterTranslations("enUS", function() return {
 	["Block messages from Bossmods."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Raidwarning"] = "Рейдовые предупреждения",
+	["Options for raid warning."] = "Опции для рейдовых предупреждений.",
+	["Participant/RaidWarn"] = "Участник/Предупреждения",
+	["Bossblock"] = "Блокировка",
+	["Block messages from Bossmods."] = "Блокировка сообщений от Боссмодов.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Raidwarning"] = "공격대 경고",

@@ -52,6 +52,38 @@ L:RegisterTranslations("enUS", function() return {
 	["off"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Invite"] = "Приглашение",
+	["Leader/Invite"] = "Лидер/Приглашение",
+	["<oRA> Sorry, the group is full."] = "<oRA> Извините, группа полна.",
+	["Inviting: "] = "Приглашается: ",
+	["^([^%s]+) has joined the raid group"] = "^([^%s]+) присоединяется к рейдовой группе.",
+	["Keyword inviting disabled."] = "Ключевое слово приглашения отключено.",
+	["Invitation keyword set to: "] = "Ключевое слово приглашения  установлено на: ",
+	["To turn off keyword inviting set it to 'off'."] = "Чтобы отключить ключевое слово приглашения, установите его на 'off'.",
+	["<oRA> Raid disbanding on request by: "] = "<oRA> Рейдовый роспуск по требованию: ",
+	["Disabling Auto-Promote for: "] = "Выключить Автоповышение для: ",
+	["Enabling Auto-Promote for: "] = "Включить Автоповышение для: ",
+	["Autopromoting: "] = "Автоповышение: ",
+	["You have no-one in your Auto-Promote list"] = "Никого нет в вашем списке Автоповышения",
+	["Options for invite."] = "Опции для приглашений.",
+	["Autopromote"] = "Автоповышение",
+	["Set/Unset an autopromotion."] = "Установить/Удалить автоповышение.",
+	["<name>"] = "<name>",
+	["Keyword"] = "Ключевое слово",
+	["Set/Unset an invitation keyword."] = "Установить/удалить ключевое слово приглашения.",
+	["<keyword>"] = "<keyword>",
+	["Disband"] = "Распустить",
+	["Disband the raid."] = "Роспуск рейда.",
+	["List"] = "Список",
+	["List autopromotions."] = "Список автоповышения.",
+	["Invite Guild"] = "Приглашение гильдии",
+	["Invite all characters of the specified level in the guild to raid."] = "Приглашение всех персонажей гильдии указанного уровня в рейд.",
+	["You are not in a guild."] = "Вы не в гильдии.",
+	["You are not in a raid group."] = "Вы не в рейдовой группе.",
+	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "Все персонажи %d уровня или выше будут приглашены в рейд через 10 секунд. Пожалуйста, покиньте ваши группы.",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	["<oRA> Sorry, the group is full."] = "<oRA> Sorry, die Gruppe ist voll",
 	["Inviting: "] = "Einladen: ",

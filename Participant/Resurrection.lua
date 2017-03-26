@@ -30,6 +30,12 @@ L:RegisterTranslations("enUS", function() return {
 	["^Corpse of (.+)$"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Participant/Resurrection"] = "Участник/Воскрешение",
+	["Options for resurrection."] = "Опции для воскрешения.",
+	["^Corpse of (.+)$"] = "^Труп (.+)$",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Participant/Resurrection"] = "부분/부활",

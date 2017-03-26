@@ -32,6 +32,20 @@ L:RegisterTranslations("enUS", function() return {
 	["Refresh"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Durability"] = "Прочность",
+	["Leader/Durability"] = "Лидер/Прочность",
+	["Options for durability checks."] = "Опции для проверки прочности.",
+	["Perform durability check"] = "Провести проверку прочности",
+	["Check the raid's durability."] = "Проверка прочности рейда.",
+	["Name"] = "Имя",
+	["Percent"] = "Процент",
+	["Broken"] = "Сломано",
+	["Perc"] = "Процент",
+	["Close"] = "Закрыть",
+	["Refresh"] = "Обновить",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Durability"] = "내구도",

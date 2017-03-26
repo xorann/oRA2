@@ -28,6 +28,19 @@ L:RegisterTranslations("enUS", function() return {
 	["Use CTRA RS Messages instead of RaidWarning."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Raidwarning"] = "Рейдовые предупреждения",
+	["Options for raid warning."] = "Опции для рейдовых предупреждений.",
+	["Leader/RaidWarn"] = "Лидер/Предупреждения",
+	["Send"] = "Отправить",
+	["Send an RS Message."] = "Отправить RS сообщение",
+	["<message>"] = "<сообщение>",
+	["To Raid"] = "В рейд",
+	["Old Style"] = "Старый стиль",
+	["Send RS Messages to Raid as well."] = "Отправить RS сообщения также в канал рейда.",
+	["Use CTRA RS Messages instead of RaidWarning."] = "Использовать CTRA RS сообщения вместо рейдовых предупреждений.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	["Raidwarning"] = "공격대경보",
 	["Options for raid warning."] = "공격대 경보에 관한 설정",

@@ -30,6 +30,18 @@ L:RegisterTranslations("enUS", function() return {
 	["Check the raid's location."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Zone"] = "Зона",
+	["Options for zone checks."] = "Опции для проверки зоны.",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Unknown"] = "Неизвестно",
+	["Name"] = "Имя",
+	["Optional/Zone"] = "Дополнительно/Зона",
+	["Perform zone check"] = "Выполнить проверку зоны",
+	["Check the raid's location."] = "Проверка местонахождения рейда.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Zone"] = "지역",

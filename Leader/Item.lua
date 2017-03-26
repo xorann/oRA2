@@ -56,6 +56,32 @@ L:RegisterTranslations("enUS", function() return {
 	["Leader/Item"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for item checks."] = "Опции для проверки предметов.",
+	["SacredCandle"] = "Священная свеча",
+	["ArcanePowder"] = "Порошок чар",
+	["WildThornroot"] = "Дикий шипокорень",
+	["Ankh"] = "Крест",
+	["SymbolofDivinity"] = "Знак божественности",
+	["FlashPowder"] = "Воспламеняющийся порошок",
+	["SoulShard"] = "Осколок души",
+	["Checks Disabled"] = "Проверки отключены",
+	["Items"] = "Предметы",
+	["Reagents"] = "Реагенты",
+	["Close"] = "Закрыть",
+	["Refresh"] = "Обновить",
+	["Name"] = "Имя",
+	["Item"] = "Предмет",
+	["Amount"] = "Количество",
+	["Nr"] = "Nr",
+	["Perform item check"] = "Провести проверку предметов",
+	["Check the raid for an item."] = "Проверка рейда на наличие предметов.",
+	["<item>"] = "<предмет>",
+	["Perform reagent check"] = "Провести проверку реагентов",
+	["Check the raid for reagents."] = "роверка рейда на наличие реагентов.",
+	["Leader/Item"] = "Лидер/Предметы",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Options for item checks."] = "아이템 확인 설정",

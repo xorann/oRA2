@@ -41,6 +41,29 @@ L:RegisterTranslations("enUS", function() return {
     ["Restoring setup |cfffca820%s|r."] = true,
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	["Group Setup"] = "Настройки группы",
+    ["Options for the group setup plugin."] = "Параметры для плагина настройки группы.",
+    ["Save"] = "Сохранить",
+    ["Save current group setup."] = "Сохранить текущие настройки группы.",
+
+    ["Restore"] = "Восстановление",
+    ["Restore saved group setup."] = "Восстановить сохраненную настройку группы.",
+
+    ["Remove"] = "Удалить",
+    ["Remove saved group setup."] = "Удалить сохраненные настройки группы.",
+
+    ["Group Setup: Please provide an ID"] = "Настройка группы: укажите ID",
+    ["Group Setup saved with id: "] = "Настройка группы сохранена с id: ",
+    ["No information for player |cff2573bc%s|r available."] = "Нет доступной информации для игрока |cff2573bc%s|r.",
+    ["Group Setup |cff81d11f%s|r restored."] = "Настройка группы |cff81d11f%s|r восстановлена.",
+    ["Setup %s"] = "Установить %s",
+    ["You are not the raid leader or a raid assistant which will be necessary to restore a setup."] = "Вы не являетесь помощником или лидером рейда, который необходим для восстановления настройки.",
+    ["You need to be the raid leader or an assitant to restore a group setup."] = "Вы должны быть помощником или лидером рейда, чтобы восстановить групповую настройку.",
+	["Could not restore setup |cffff0000%s|r."] = "Не удалось восстановить настройку |cffff0000%s|r.",
+    ["Restoring setup |cfffca820%s|r."] = "Восстановление настройки |cfffca820%s|r.",
+} end)
+
 L:RegisterTranslations("deDE", function() return {
     ["Group Setup"] = "Gruppenaufstellung",
     ["groupsetup"] = "gruppenaufstellung", -- console

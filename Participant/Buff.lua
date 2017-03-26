@@ -85,6 +85,44 @@ L:RegisterTranslations("enUS", function() return {
 	["DampenMagic"] = "Dampen Magic",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Participant/Buff"] = "Участник/Баффы",
+	["Buff"] = "Баффы",
+	["Options for buffs."] = "Опции для баффов.",
+
+	["PowerWordFortitude"] = "Слово силы: Стойкость",
+	["PrayerOfFortitude"] = "Молитва стойкости",
+	["GiftOfTheWild"] = "Дар дикой природы",
+	["MarkOfTheWild"] = "Знак дикой природы",
+	["ArcaneIntellect"] = "Чародейский интеллект",
+	["ArcaneBrilliance"] = "Чародейская гениальность",
+	["ShadowProtection"] = "Защита от темной магии",
+	["PrayerofShadowProtection"] = "Молитва защиты от темной магии",
+	["PowerWordShield"] = "Слово силы: Щит",
+	["SoulstoneResurrection"] = "Воскрешение камнем души",
+	["DivineSpirit"] = "Божественный дух",
+	["PrayerOfSpirit"] = "Молитва духа",
+	["Thorns"] = "Шипы",
+	["FearWard"] = "Защита от страха",
+	["BlessingOfMight"] = "Благословение могущества",
+	["GreaterBlessingOfMight"] = "Великое благословение могущества",
+	["BlessingOfWisdom"] = "Благословение мудрости",
+	["GreaterBlessingOfWisdom"] = "Великое благословение мудрости",
+	["BlessingOfKings"] = "Благословение королей",
+	["GreaterBlessingOfKings"] = "Великое благословение королей",
+	["BlessingOfSalvation"] = "Благословение спасения",
+	["GreaterBlessingOfSalvation"] = "Великое благословение спасения",
+	["BlessingOfLight"] = "Благословение Света",
+	["GreaterBlessingOfLight"] = "Великое благословение Света",
+	["BlessingOfSanctuary"] = "Благословение неприкосновенности",
+	["GreaterBlessingOfSanctuary"] = "Великое благословение неприкосновенности",
+	["Renew"] = "Обновление",
+	["Rejuvenation"] = "Омоложение",
+	["Regrowth"] = "Восстановление",
+	["AmplifyMagic"] = "Усиление магии",
+	["DampenMagic"] = "Ослабление магии",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Participant/Buff"] = "부분/버프",

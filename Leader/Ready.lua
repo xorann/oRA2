@@ -40,6 +40,30 @@ L:RegisterTranslations("enUS", function() return {
 	["Leader/Ready"] = true,
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for ready checks and votes."] = "Опции для проверки готовности и голосования.",
+	["Sound"] = "Звук",
+	["Toggle an audio warning upon a ready check or vote."] = "Вкл./Выкл. звукового предупреждения при проверке готовности или голосования.",
+	["Ready"] = "Готов",
+	["Not Ready"] = "Не готов",
+	["Are you Ready?"] = "Вы готовы?",
+	["Yes"] = "Да",
+	["No"] = "Нет",
+	["Ready Check"] = "Проверка готовности",
+	["Perform a ready check."] = "Проведение проверки готовности.",
+	["Close"] = "Закрыть",
+	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s проводит проверку готовности.",
+	["AFK: "] = "АФК: ",
+	["Not Ready: "] = "Не готовы: ",
+	["Yes: %d No: %d AFK: %d"] = "Да: %d Нет: %d АФК: %d",
+	["Vote Results for: "] = "Результаты голосования для: ",
+	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s проводит голосование.",
+	["Vote"] = "Голосование",
+	["Perform a vote."] = "Проведение голосования.",
+	["<vote>"] = "<vote>",
+	["Leader/Ready"] = "Лидер/Готовность",
+} end)
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Options for ready checks and votes."] = "준비확인과 투표 설정",

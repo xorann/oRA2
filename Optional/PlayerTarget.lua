@@ -15,45 +15,39 @@ local surface = AceLibrary("Surface-1.0")
 ----------------------------
 
 L:RegisterTranslations("enUS", function() return {
-	["playertargetoptional"] = true,
-	["pt"] = true,
 	["Player"] = true,
 	["PlayerTarget"] = true,
 	["Optional/PlayerTarget"] = true,
 	["Options for the playertargets."] = true,
-	["Targettarget"] = true,
-	["Toggle TargetTarget frames."] = true,
 	["Scale"] = true,
 	["Set frame scale."] = true,
 	["Alpha"] = true,
 	["Set frame alpha."] = true,
-	["Raidicon"] = true,
+	["Raid icon"] = true,
 	["Toggle raid icons."] = true,
 	["Frames"] = true,
 	["Options for the playertarget frames."] = true,
-	["Growup"] = true,
+	["Grow up"] = true,
 	["Toggle growup."] = true,
 	["Inverse"] = true,
 	["Toggle inverse healthbar."] = true,
 	["Deficit"] = true,
 	["Toggle deficit health."] = true,
-	["Clickcast"] = true,
+	["Click cast"] = true,
 	["Toggle clickcast support."] = true,
-	["Clicktarget"] = true,
+	["Click target"] = true,
 	["Define clicktargets."] = true,
 	["Define the clicktarget for player."] = true,
 	["Define the clicktarget for target."] = true,
 	["Define the clicktarget for targettarget."] = true,
 	["Target"] = true,
-	["TargetTarget"] = true,
+	["Target Target"] = true,
 	["Nr of Players shown."] = true,
 	["Nr Players"] = true,
-	["Nr"] = true,
-	["Classcolor"] = true,
+	["Class color"] = true,
 	["Color healthbars by class."] = true,
-	["Enemycolor"] = true,
+	["Enemy color"] = true,
 	["Set the color for enemies. (used when classcolor is enabled)"] = true,
-	["Coloraggro"] = true,
 	["Color Aggro"] = true,
 	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = true,
 	["Backdrop"] = true,
@@ -76,61 +70,123 @@ L:RegisterTranslations("enUS", function() return {
 	["Vertical"] = true,
 	["Horizontal"] = true,
 	
-	["set"] = true,
 	["Set Player"] = true,
 	["Set a player."]= true,
-	["<nr> <name>"] = true,
-	["<nr>"] = true,
 	["<name>"] = true,
 	["Remove Player"] = true,
-	["remove"] = true,
 	["Remove a player."] = true,
 	["Removed player: "] = true,
 	["Set player: "] = true,
 	
-	["(%S+)%s*(.*)"] = true,
+	--["(%S+)%s*(.*)"] = true,
 
 	["<Not Assigned>"] = true,
-
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Player"] = "Игрок",
+	["PlayerTarget"] = "Цель игрока",
+	["Optional/PlayerTarget"] = "Дополнительно/Цель игрока",
+	["Options for the playertargets."] = "Опции для целей игроков.",
+	["Scale"] = "Масштаб",
+	["Set frame scale."] = "Установка масштаба рамок.",
+	["Alpha"] = "Прозрачность",
+	["Set frame alpha."] = "Установка прозрачности рамок.",
+	["Raid icon"] = "Иконки рейда",
+	["Toggle raid icons."] = "Вкл./Выкл. иконок рейда.",
+	["Frames"] = "Рамки",
+	["Options for the playertarget frames."] = "Опции для рамок цели игроков.",
+	["Grow up"] = "Рост вверх",
+	["Toggle growup."] = "Вкл./Выкл. рост вверх.",
+	["Inverse"] = "Противоположно",
+	["Toggle inverse healthbar."] = "Вкл./Выкл. инверсии полосы здоровья.",
+	["Deficit"] = "Нехватка",
+	["Toggle deficit health."] = "Вкл./Выкл. отображения нехватки здоровья.",
+	["Click cast"] = "Click cast",
+	["Toggle clickcast support."] = "Toggle clickcast support.",
+	["Click target"] = "Нажатие на рамки",
+	["Define clicktargets."] = "Определение взятия в цель.",
+	["Define the clicktarget for player."] = "Определение взятия в цель по нажатии на рамку игрока.",
+	["Define the clicktarget for target."] = "Определение взятия в цель по нажатии на рамку цели.",
+	["Define the clicktarget for targettarget."] = "Определение взятия в цель по нажатии на рамку цель цели.",
+	["Target"] = "Цель",
+	["Target Target"] = "Цель цели",
+	["Nr of Players shown."] = "Количество отображаемых игроков.",
+	["Nr Players"] = "Количество игроков",
+	["Class color"] = "Цвет класса",
+	["Color healthbars by class."] = "Цветные полосы здоровья по классам.",
+	["Enemy color"] = "Цвет врага",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Установка цвета для врагов. (Используется, когда цвет класса включен)",
+	["Color Aggro"] = "Цвет аггро",
+	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Статус цвета аггро для игроков на их именах. Оранжевый - имеет цель, Зеленый - танкует, Красный - не имеет аггро.",
+	["Backdrop"] = "Фон",
+	["Toggle the backdrop."] = "Вкл./Выкл. фона.",
+	["Highlight"] = "Выделение",
+	["Toggle highlighting your target."] = "Вкл./Выкл. выделения вашей цели.",
+	["Reverse"] = "Обратный порядок",
+	["Toggle reverse order PT|PTT|PTTT or PTTT|PTT|PT."] = "Вкл./Выкл. обратного порядка: PT|PTT|PTTT или PTTT|PTT|PT.",
+	["Numbers"] = "Номера",
+	["Toggle showing of PT numbers."] = "Вкл./Выкл. отображения номеров на цели игроков.",
+	["Tooltips"] = "Подсказки",
+	["Toggle showing of tooltips."] = "Вкл./Выкл. отображения подсказок.",
+	["Show"] = "Отображение",
+	["Show player."] = "Отображение игрока.",
+	["Show target."] = "Отображение цели.",
+	["Show targettarget."] = "Отображение цели цели.",
+	["Define which frames you want to see."] = "Установка отображаемых рамок.",
+	["Layout"] = "Расположение",
+	["Set the layout for the PT frames."] = "Установка расположения для рамок целей игроков.",
+	["Vertical"] = "Вертикально",
+	["Horizontal"] = "Горизонтально",
+	
+	["Set Player"] = "Назначить игрока",
+	["Set a player."]= "Назначение игрока.",
+	["<name>"] = "<имя>",
+	["Remove Player"] = "Удалить игрока",
+	["Remove a player."] = "Удаление игрока.",
+	["Removed player: "] = "Удален игрок: ",
+	["Set player: "] = "Установлен игрок: ",
+	
+	--["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
+
+	["<Not Assigned>"] = "<Не назначено>",
+} end )
 
 L:RegisterTranslations("koKR", function() return {
 	["Player"] = "플레이어탱커",
 	["PlayerTarget"] = "플레이어탱커대상",
 	["Optional/PlayerTarget"] = "부가/플레이어탱커",
 	["Options for the playertargets."] = "플레이어 탱커에 대한 설정을 변경합니다.",
-	["Targettarget"] = "대상의대상",
+	["Target target"] = "대상의대상",
 	["Toggle TargetTarget frames."] = "대상의 대상창을 토글합니다.",
 	["Scale"] = "크기",
 	["Set frame scale."] = "창의 크기를 설정합니다.",
 	["Alpha"] = "투명도",
 	["Set frame alpha."] = "창의 투명도를 설정합니다.",
-	["Raidicon"] = "공격대아이콘",
+	["Raid icon"] = "공격대아이콘",
 	["Toggle raid icons."] = "공격대 아이콘 표시를 토글합니다.",
 	["Frames"] = "창",
 	["Options for the playertarget frames."] = "플레이어탱커 창에 관한 설정을 변경합니다.",
-	["Growup"] = "방향",
+	["Grow up"] = "방향",
 	["Toggle growup."] = "창의 진행 방향을 토글합니다.",
 	["Inverse"] = "반전",
 	["Toggle inverse healthbar."] = "생명력바 반전기능을 토글합니다.",
 	["Deficit"] = "결손치",
 	["Toggle deficit health."] = "생명력바 결손치 표시기능을 토글합니다.",
-	["Clickcast"] = "시전",
+	["Click cast"] = "시전",
 	["Toggle clickcast support."] = "클릭캐스트 기능 지원을 토글합니다.",
-	["Clicktarget"] = "클릭시대상선정",
+	["Click target"] = "클릭시대상선정",
 	["Define clicktargets."] = "클릭시 선택 대상을 정의합니다.",
 	["Define the clicktarget for player."] = "플레이어탱커를 클릭시 선택 대상을 정의힙니다.",
 	["Define the clicktarget for target."] = "대상 클릭시 선택 대상을 정의합니다.",
 	["Define the clicktarget for targettarget."] = "대상의 대상을 클릭시 선택 대상을 정의합니다.",
 	["Target"] = "대상",
-	["TargetTarget"] = "대상의대상",
+	["Target Target"] = "대상의대상",
 	["Nr of Players shown."] = "플레이어탱커의 번호를 표시힙니다.",
 	["Nr Players"] = "플레이어탱커의 수",
-	["Nr"] = "수",
-	["Classcolor"] = "직업별색상",
+	["Class color"] = "직업별색상",
 	["Color healthbars by class."] = "직업별로 생명력바의 색상을 변경합니다.",
-	["Enemycolor"] = "적색상",
+	["Enemy color"] = "적색상",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "적의 경우의 색상을 설정합니다. (직업별색상 기능을 사용할 때)",
 	["Color Aggro"] = "어그로 색상",
 	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "현재 상태에 따라서 플레이어 탱커를 위한 어그로 색상을 표시힙니다. 오렌지는 대상, 녹색은 탱커, 적색은 어그로 없읍니다.",
@@ -154,64 +210,55 @@ L:RegisterTranslations("koKR", function() return {
 	["Vertical"] = "수직",
 	["Horizontal"] = "수평",
 	
---	["set"] = true,
 	["Set Player"] = "플레이어 선택",
 	["Set a player."]= "플레이어를 선택합니다",
-	["<nr> <name>"] = "<번호> <이름>",
-	["<nr>"] = "<번호>",
 	["<name>"] = "<이름>",
 	["Remove Player"] = "플레이어 삭제",
-	["remove"] = "삭제",
 	["Remove a player."] = "플레이어를 목록에서 삭제합니다.",
 	["Removed player: "] = "삭제된 플레이어: ",
 	["Set player: "] = "설정된 플레이어: ",
 	
-	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
+	--["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
 
 	["<Not Assigned>"] = "<미정의됨>",
-
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	["playertargetoptional"] = "playertargetoptional",
-	["pt"] = "玩家目标",
 	["Player"] = "玩家",
 	["PlayerTarget"] = "玩家目标",
 	["Optional/PlayerTarget"] = "Optional/PlayerTarget",
 	["Options for the playertargets."] = "玩家目标选项",
-	["Targettarget"] = "目标的目标",
+	["Target target"] = "目标的目标",
 	["Toggle TargetTarget frames."] = "显示目标的目标框体",
 	["Scale"] = "大小",
 	["Set frame scale."] = "设定框体大小",
 	["Alpha"] = "透明度",
 	["Set frame alpha."] = "设置框体透明度",
-	["Raidicon"] = "raid图标",
+	["Raid icon"] = "raid图标",
 	["Toggle raid icons."] = "显示raid图标",
 	["Frames"] = "框体",
 	["Options for the playertarget frames."] = "玩家目标框体选项",
-	["Growup"] = "往上增添",
+	["Grow up"] = "往上增添",
 	["Toggle growup."] = "选择往上增添",
 	["Inverse"] = "翻转",
 	["Toggle inverse healthbar."] = "选择翻转血条",
 	["Deficit"] = "亏损血量",
 	["Toggle deficit health."] = "显示亏损血量",
-	["Clickcast"] = "点击施法",
+	["Click cast"] = "点击施法",
 	["Toggle clickcast support."] = "选择点击施法支持",
-	["Clicktarget"] = "点击设定目标",
+	["Click target"] = "点击设定目标",
 	["Define clicktargets."] = "定义点击设定目标",
 	["Define the clicktarget for player."] = "定义点击PT设定的目标",
 	["Define the clicktarget for target."] = "定义点击PTT设定的目标",
 	["Define the clicktarget for targettarget."] = "定义点击PTTT设定的目标",
 	["Target"] = "目标",
-	["TargetTarget"] = "目标的目标",
+	["Target Target"] = "目标的目标",
 	["Nr of Players shown."] = "显示的PT数量",
 	["Nr Players"] = "PT数量",
-	["Nr"] = "数量",
-	["Classcolor"] = "职业颜色",
+	["Class color"] = "职业颜色",
 	["Color healthbars by class."] = "把血条着色为职业颜色",
-	["Enemycolor"] = "敌人颜色",
+	["Enemy color"] = "敌人颜色",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "为敌人设置颜色(需要激活职业颜色)",
-	["Coloraggro"] = "仇恨颜色",
 	["Color Aggro"] = "仇恨颜色",
 	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "PT的名字边框用颜色来显示仇恨的状态。橘红是有目标，绿色是正在坦克，红色是没有仇恨",
 	["Backdrop"] = "背景",
@@ -234,49 +281,43 @@ L:RegisterTranslations("zhCN", function() return {
 	["Vertical"] = "垂直",
 	["Horizontal"] = "水平",
 	
-	["set"] = "设置",
 	["Set Player"] = "设定PT",
 	["Set a player."]= "设定PT",
-	["<nr> <name>"] = "<数量> <名字>",
-	["<nr>"] = "<数量>",
 	["<name>"] = "<姓名>",
 	["Remove Player"] = "移除PT",
-	["remove"] = "移除",
 	["Remove a player."] = "移除PT",
 	["Removed player: "] = "移除PT：",
 	["Set player: "] = "设置PT：",
 	
-	["(%S+)%s*(.*)"] = "(%d+)%s*(.*)",
+	--["(%S+)%s*(.*)"] = "(%d+)%s*(.*)",
 
 	["<Not Assigned>"] = "<还未设定>",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	["playertargetoptional"] = "玩家自訂目標",
-	["pt"] = "玩家目標",
 	["Player"] = "玩家",
 	["PlayerTarget"] = "玩家目標",
 	["Optional/PlayerTarget"] = "可選/玩家目標",
 	["Options for the playertargets."] = "玩家目標選項",
-	["Targettarget"] = "目標的目標",
+	["Target target"] = "目標的目標",
 	["Toggle TargetTarget frames."] = "顯示目標的目標框架",
 	["Scale"] = "大小",
 	["Set frame scale."] = "設定框架大小",
 	["Alpha"] = "透明度",
 	["Set frame alpha."] = "設定框架的透明度",
-	["Raidicon"] = "團隊圖示",
+	["Raid icon"] = "團隊圖示",
 	["Toggle raid icons."] = "切換團隊圖示",
 	["Frames"] = "框架",
 	["Options for the playertarget frames."] = "玩家目標的框架選項",
-	["Growup"] = "往上排列",
+	["Grow up"] = "往上排列",
 	["Toggle growup."] = "切換往上排列",
 	["Inverse"] = "倒轉",
 	["Toggle inverse healthbar."] = "切換倒轉血條",
 	["Deficit"] = "減少血量",
 	["Toggle deficit health."] = "顯示減少血量",
-	["Clickcast"] = "點擊施法",
+	["Click cast"] = "點擊施法",
 	["Toggle clickcast support."] = "切換點擊施法支援",
-	["Clicktarget"] = "點擊設定目標",
+	["Click target"] = "點擊設定目標",
 	["Define clicktargets."] = "定義點擊設定目標",
 	["Define the clicktarget for player."] = "定義點擊PT設定的目標",
 	["Define the clicktarget for target."] = "定義點擊PTT設定的目標",
@@ -285,12 +326,10 @@ L:RegisterTranslations("zhTW", function() return {
 	["TargetTarget"] = "目標的目標",
 	["Nr of Players shown."] = "顯示的玩家數量",
 	["Nr Players"] = "玩家數量",
-	["Nr"] = "數量",
-	["Classcolor"] = "職業顏色",
+	["Class color"] = "職業顏色",
 	["Color healthbars by class."] = "依職業設定血條顏色",
-	["Enemycolor"] = "敵人顏色",
+	["Enemy color"] = "敵人顏色",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "為敵人設定顏色(需要使用職業顏色)",
-	["Coloraggro"] = "仇恨顏色",
 	["Color Aggro"] = "仇恨顏色",
 	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "玩家目標的名字邊框用顏色來顯示仇恨的狀態。橘紅是有目標，綠色是正在坦怪，紅色是沒有仇恨。",
 	["Backdrop"] = "背景",
@@ -313,50 +352,43 @@ L:RegisterTranslations("zhTW", function() return {
 	["Vertical"] = "垂直",
 	["Horizontal"] = "水平",
 	
-	["set"] = "設置",
 	["Set Player"] = "設置玩家",
 	["Set a player."]= "設置一位玩家",
-	["<nr> <name>"] = "<數量> <姓名>",
-	["<nr>"] = "<數量>",
 	["<name>"] = "<姓名>",
 	["Remove Player"] = "移除玩家",
-	["remove"] = "移除",
 	["Remove a player."] = "移除一位玩家",
 	["Removed player: "] = "移除玩家：",
 	["Set player: "] = "設置玩家：",
 	
-	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
+	--["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
 
 	["<Not Assigned>"] = "<尚未設置>",
-
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	--["playertargetoptional"] = true,
-	--["pt"] = true,
 	["Player"] = "Joueur",
 	["PlayerTarget"] = "Cibles Joueurs (PT)",
 	["Optional/PlayerTarget"] = "Optionnel/Cibles Joueurs",
 	["Options for the playertargets."] = "Optons concernant les cibles des joueurs.",
-	--["Targettarget"] = true,
+	["Target target"] = "Target target",
 	["Toggle TargetTarget frames."] = "Affiche ou non les cadres de la cible de la cible.",
 	["Scale"] = "Taille",
 	["Set frame scale."] = "D\195\169termine la taille des cadres.",
 	["Alpha"] = "Transparence",
 	["Set frame alpha."] = "D\195\169termine la transparence des cadres.",
-	["Raidicon"] = "Ic\195\180nedeRaid",
+	["Raid icon"] = "Ic\195\180nedeRaid",
 	["Toggle raid icons."] = "Affiche ou non les ic\195\180nes de raid.",
 	["Frames"] = "Cadres",
 	["Options for the playertarget frames."] = "Options concernant les cadres des cibles des joueurs.",
-	["Growup"] = "VersleHaut",
+	["Grow up"] = "VersleHaut",
 	["Toggle growup."] = "Ajoute ou non les PTs vers le haut.",
 	["Inverse"] = "Inverser",
 	["Toggle inverse healthbar."] = "Inverse ou non le sens de remplissage des barres de vie.",
 	["Deficit"] = "D\195\169ficit",
 	["Toggle deficit health."] = "Affiche ou non le d\195\169ficit en vie.",
-	--["Clickcast"] = true,
+	["Click cast"] = "Click cast",
 	["Toggle clickcast support."] = "Active ou non le support des addons de \"clickcasting\".",
-	--["Clicktarget"] = true,
+	["Click target"] = "Click target",
 	["Define clicktargets."] = "D\195\169termine la cible des clics.",
 	["Define the clicktarget for player."] = "D\195\169termine la cible lors du clic sur le cadre du joueur.",
 	["Define the clicktarget for target."] = "D\195\169termine la cible lors du clic sur le cadre de la cible.",
@@ -365,12 +397,10 @@ L:RegisterTranslations("frFR", function() return {
 	["TargetTarget"] = "CibledelaCible",
 	["Nr of Players shown."] = "Nombre de joueurs \195\160 afficher.",
 	["Nr Players"] = "Nbre de joueurs",
-	["Nr"] = "N\194\176",
-	["Classcolor"] = "CouleurdeClasse",
+	["Class color"] = "CouleurdeClasse",
 	["Color healthbars by class."] = "Colore les barres de vie selon la classe.",
-	["Enemycolor"] = "CouleurEnnemi",
+	["Enemy color"] = "CouleurEnnemi",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "D\195\169termine la couleur pour les ennemis. (utilis\195\169 si CouleurdeClasse est activ\195\169)",
-	--["Coloraggro"] = true,
 	["Color Aggro"] = "Couleur d'aggro",
 	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des PTs selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent, Rouge s'ils n'ont pas l'aggro.",
 	["Backdrop"] = "Fond",
@@ -390,17 +420,13 @@ L:RegisterTranslations("frFR", function() return {
 	["Define which frames you want to see."] = "D\195\169termine les cadres que vous souhaitez voir.",
 	["Layout"] = "Style",
 	["Set the layout for the PT frames."] = "D\195\169termine le style des cadres des PTs.",
-	--["Vertical"] = true,
-	--["Horizontal"] = true,
+	["Vertical"] = "Vertical",
+	["Horizontal"] = "Horizontal",
 
-	--["set"] = true,
 	["Set Player"] = "Ajouter un joueur",
 	["Set a player."]= "Ajoute un joueur.",
-	["<nr> <name>"] = "<n\194\176> <nom>",
-	["<nr>"] = "<n\194\176>",
 	["<name>"] = "<nom>",
 	["Remove Player"] = "Enlever un joueur",
-	--["remove"] = true,
 	["Remove a player."] = "Enl\195\168ve un joueur",
 	["Removed player: "] = "Joueur enlev\195\169 : ",
 	["Set player: "] = "Joueur ajout\195\169 : ",
@@ -414,7 +440,7 @@ L:RegisterTranslations("frFR", function() return {
 --      Module Declaration      --
 ----------------------------------
 
-oRAOPlayerTarget = oRA:NewModule(L["playertargetoptional"])
+oRAOPlayerTarget = oRA:NewModule("playertargetoptional")
 oRAOPlayerTarget.defaults = {
 	raidicon = true,
 	alpha = 1,
@@ -423,9 +449,9 @@ oRAOPlayerTarget.defaults = {
 	inverse = false,
 	deficit = false,
 	clickcast = true,
-	ctplayer = L["Player"],
-	cttarget = L["Target"],
-	cttargettarget = L["TargetTarget"],
+	ctplayer = "player",
+	cttarget = "target",
+	cttargettarget = "targettarget",
 	nrpts = 10,
 	classcolor = true,
 	enemycolor = "cc2200",
@@ -443,28 +469,23 @@ oRAOPlayerTarget.defaults = {
 }
 oRAOPlayerTarget.optional = true
 oRAOPlayerTarget.name = L["Optional/PlayerTarget"]
-oRAOPlayerTarget.consoleCmd = L["pt"]
+oRAOPlayerTarget.consoleCmd = "pt"
 oRAOPlayerTarget.consoleOptions = {
-	type = "group",
-	desc = L["Options for the playertargets."],
-	name = L["PlayerTarget"],
+	type = "group", name = L["PlayerTarget"], desc = L["Options for the playertargets."],
 	args = {
-		[L["Nr"]] = {
-			type = "range",
-			name = L["Nr Players"],
-			desc = L["Nr of Players shown."],
+		nr = {
+			type = "range", name = L["Nr Players"], desc = L["Nr of Players shown."],
 			get = function() return oRAOPlayerTarget.db.profile.nrpts end,
 			set = function(v) oRAOPlayerTarget:SetNrPlayers(v) end,
 			min = 0, max = 10, step = 1,
 		},
-		[L["set"]] = {
-			name = L["Set Player"], type = "group",
-			desc = L["Set a player."],
+		set = {
+			type = "group", name = L["Set Player"], desc = L["Set a player."],
 			-- disabled = function() return not oRAOPlayerTarget:IsValidRequest(UnitName("player"), true) end,
 			disabled = function() return not oRA:IsModuleActive(oRAOPlayerTarget) end,
 			args = {
 				["1"] = {
-					name = "1.", type = "text", desc = L["Set Player"].." 1",
+					type = "text", name = "1.", desc = L["Set Player"].." 1",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[1] then return oRAOPlayerTarget.db.profile.playertable[1]
 						else return "" end
@@ -475,7 +496,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 1,
 				},
 				["2"] = {
-					name = "2.", type = "text", desc = L["Set Player"].." 2",
+					type = "text", name = "2.", desc = L["Set Player"].." 2",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[2] then return oRAOPlayerTarget.db.profile.playertable[2]
 						else return "" end
@@ -486,7 +507,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 2,
 				},
 				["3"] = {
-					name = "3.", type = "text", desc = L["Set Player"].." 3",
+					type = "text", name = "3.", desc = L["Set Player"].." 3",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[3] then return oRAOPlayerTarget.db.profile.playertable[3]
 						else return "" end
@@ -497,7 +518,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 3,
 				},
 				["4"] = {
-					name = "4.", type = "text", desc = L["Set Player"].." 4",
+					type = "text", name = "4.", desc = L["Set Player"].." 4",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[4] then return oRAOPlayerTarget.db.profile.playertable[4]
 						else return "" end
@@ -508,7 +529,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 4,
 				},
 				["5"] = {
-					name = "5.", type = "text", desc = L["Set Player"].." 5",
+					type = "text", name = "5.", desc = L["Set Player"].." 5",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[5] then return oRAOPlayerTarget.db.profile.playertable[5]
 						else return "" end
@@ -519,7 +540,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 5,
 				},
 				["6"] = {
-					name = "6.", type = "text", desc = L["Set Player"].." 6",
+					type = "text", name = "6.", desc = L["Set Player"].." 6",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[6] then return oRAOPlayerTarget.db.profile.playertable[6]
 						else return "" end
@@ -530,7 +551,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 6,
 				},
 				["7"] = {
-					name = "7.", type = "text", desc = L["Set Player"].." 7",
+					type = "text", name = "7.", desc = L["Set Player"].." 7",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[7] then return oRAOPlayerTarget.db.profile.playertable[7]
 						else return "" end
@@ -541,7 +562,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 7,
 				},
 				["8"] = {
-					name = "8.", type = "text", desc = L["Set Player"].." 8",
+					type = "text", name = "8.", desc = L["Set Player"].." 8",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[8] then return oRAOPlayerTarget.db.profile.playertable[8]
 						else return "" end
@@ -552,7 +573,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 8,
 				},
 				["9"] = {
-					name = "9.", type = "text", desc = L["Set Player"].." 9",
+					type = "text", name = "9.", desc = L["Set Player"].." 9",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[9] then return oRAOPlayerTarget.db.profile.playertable[9]
 						else return "" end
@@ -563,7 +584,7 @@ oRAOPlayerTarget.consoleOptions = {
 					order = 9,
 				},
 				["10"] = {
-					name = "10.", type = "text", desc = L["Set Player"].." 10",
+					type = "text", name = "10.", desc = L["Set Player"].." 10",
 					get = function() 
 						if oRAOPlayerTarget.db.profile.playertable[10] then return oRAOPlayerTarget.db.profile.playertable[10]
 						else return "" end
@@ -575,90 +596,83 @@ oRAOPlayerTarget.consoleOptions = {
 				},
 			}
 		},
-		[L["remove"]] = {
-			name = L["Remove Player"], type = "group",
-			desc = L["Remove a player."],
+		remove = {
+			type = "group", name = L["Remove Player"], desc = L["Remove a player."],
 			-- disabled = function() return not oRAOPlayerTarget:IsValidRequest(UnitName("player"), true) end,
 			disabled = function() return not oRA:IsModuleActive(oRAOPlayerTarget) end,
 			args = {
 				["1"] = {
-					name = "1.", type = "execute", desc = L["Remove Player"].." 1",
+					type = "execute", name = "1.", desc = L["Remove Player"].." 1",
 					func = function() oRAOPlayerTarget:Remove("1") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[1] end,
 					order = 1,
 				},				
 				["2"] = {
-					name = "2.", type = "execute", desc = L["Remove Player"].." 2",
+					type = "execute", name = "2.", desc = L["Remove Player"].." 2",
 					func = function() oRAOPlayerTarget:Remove("2") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[2] end,
 					order = 2,
 				},
 				["3"] = {
-					name = "3.", type = "execute", desc = L["Remove Player"].." 3",
+					type = "execute", name = "3.", desc = L["Remove Player"].." 3",
 					func = function() oRAOPlayerTarget:Remove("3") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[3] end,
 					order = 3,
 				},
 				["4"] = {
-					name = "4.", type = "execute", desc = L["Remove Player"].." 4",
+					type = "execute", name = "4.", desc = L["Remove Player"].." 4",
 					func = function() oRAOPlayerTarget:Remove("4") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[4] end,
 					order = 4,
 				},
 				["5"] = {
-					name = "5.", type = "execute", desc = L["Remove Player"].." 5",
+					type = "execute", name = "5.", desc = L["Remove Player"].." 5",
 					func = function() oRAOPlayerTarget:Remove("5") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[5] end,
 					order = 5,
 				},
 				["6"] = {
-					name = "6.", type = "execute", desc = L["Remove Player"].." 6",
+					type = "execute", name = "6.", desc = L["Remove Player"].." 6",
 					func = function() oRAOPlayerTarget:Remove("6") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[6] end,
 					order = 6,
 				},
 				["7"] = {
-					name = "7.", type = "execute", desc = L["Remove Player"].." 7",
+					type = "execute", name = "7.", desc = L["Remove Player"].." 7",
 					func = function() oRAOPlayerTarget:Remove("7") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[7] end,
 					order = 7,
 				},
 				["8"] = {
-					name = "8.", type = "execute", desc = L["Remove Player"].." 8",
+					type = "execute", name = "8.", desc = L["Remove Player"].." 8",
 					func = function() oRAOPlayerTarget:Remove("8") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[8] end,
 					order = 8,
 				},
 				["9"] = {
-					name = "9.", type = "execute", desc = L["Remove Player"].." 9",
+					type = "execute", name = "9.", desc = L["Remove Player"].." 9",
 					func = function() oRAOPlayerTarget:Remove("9") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[9] end,
 					order = 9,
 				},
 				["10"] = {
-					name = "10.", type = "execute", desc = L["Remove Player"].." 10",
+					type = "execute", name = "10.", desc = L["Remove Player"].." 10",
 					func = function() oRAOPlayerTarget:Remove("10") end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.playertable[10] end,
 					order = 10,
 				},
 			}
 		},	
-		[L["Frames"]] = {
-			type = "group",
-			desc = L["Options for the playertarget frames."],
-			name = L["Frames"],
+		frames = {
+			type = "group", name = L["Frames"], desc = L["Options for the playertarget frames."],
 			args = {
-				[L["Classcolor"]] = {
-					type = "toggle",
-					name = L["Classcolor"],
-					desc = L["Color healthbars by class."],
+				classcolor = {
+					type = "toggle", name = L["Class color"], desc = L["Color healthbars by class."],
 					get = function() return oRAOPlayerTarget.db.profile.classcolor end,
 					set = function(v) oRAOPlayerTarget:SetClassColor(v) end,
 				},
-				[L["Enemycolor"]] = {
-					type = "color",
-					name = L["Enemycolor"],
-					desc = L["Set the color for enemies. (used when classcolor is enabled)"],
+				enemycolor = {
+					type = "color", name = L["Enemy color"], desc = L["Set the color for enemies. (used when classcolor is enabled)"],
 					get = function()
 						local _, r, g, b = paintchips:GetRGBPercent( oRAOPlayerTarget.db.profile.enemycolor )
 						return r, g, b
@@ -670,159 +684,126 @@ oRAOPlayerTarget.consoleOptions = {
 					end,
 					disabled = function() return not oRAOPlayerTarget.db.profile.classcolor end,					
 				},
-				[L["Coloraggro"]] = {
-					type = "toggle",
-					name = L["Color Aggro"],
-					desc = L["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."],
+				coloraggro = {
+					type = "toggle", name = L["Color Aggro"], desc = L["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."],
 					get = function() return oRAOPlayerTarget.db.profile.coloraggro end,
 					set = function(v) oRAOPlayerTarget.db.profile.coloraggro = v end,
 				},
-				[L["Backdrop"]] = {
-					type = "toggle",
-					name = L["Backdrop"],
-					desc = L["Toggle the backdrop."],
+				backdrop = {
+					type = "toggle", name = L["Backdrop"], desc = L["Toggle the backdrop."],
 					get = function() return oRAOPlayerTarget.db.profile.backdrop end,
 					set = function(v) oRAOPlayerTarget.db.profile.backdrop = v end,
 				},
-				[L["Highlight"]] = {
-					type = "toggle",
-					name = L["Highlight"],
-					desc = L["Toggle highlighting your target."],
+				highlight = {
+					type = "toggle", name = L["Highlight"], desc = L["Toggle highlighting your target."],
 					get = function() return oRAOPlayerTarget.db.profile.highlight end,
 					set = function(v) oRAOPlayerTarget.db.profile.highlight = v end,
 				},
-		
-				[L["Scale"]] = {
-					type = "range",
-					name = L["Scale"],
-					desc = L["Set frame scale."],
+				scale = {
+					type = "range", name = L["Scale"], desc = L["Set frame scale."],
 					get = function() return oRAOPlayerTarget.db.profile.scale end,
 					set = function(v) oRAOPlayerTarget:SetScale(v) end,
 					min = 0.1,
 					max = 2,
-				},				
-
-				[L["Alpha"]] = {
-					type = "range",
-					name = L["Alpha"],
-					desc = L["Set frame alpha."],
+				},
+				alpha = {
+					type = "range", name = L["Alpha"], desc = L["Set frame alpha."],
 					get = function() return oRAOPlayerTarget.db.profile.alpha end,
 					set = function(v) oRAOPlayerTarget:SetAlpha(v) end,
 					min = 0.1,
 					max = 1,
 				},
-	
-				[L["Raidicon"]] = {
-					type = "toggle",
-					name = L["Raidicon"],
-					desc = L["Toggle raid icons."],
+				raidicon = {
+					type = "toggle", name = L["Raid icon"], desc = L["Toggle raid icons."],
 					get = function() return oRAOPlayerTarget.db.profile.raidicon end,
 					set = function(v) oRAOPlayerTarget:ToggleRaidIcon(v) end,
 				},
-
-				[L["Growup"]] = {
-					type = "toggle",
-					name = L["Growup"],
-					desc = L["Toggle growup."],
+				growup = {
+					type = "toggle", name = L["Grow up"], desc = L["Toggle growup."],
 					get = function() return oRAOPlayerTarget.db.profile.growup end,
 					set = function(v) oRAOPlayerTarget:ToggleGrowup(v) end,
 				},
-
-				[L["Inverse"]] = {
-					type = "toggle",
-					name = L["Inverse"],
-					desc = L["Toggle inverse healthbar."],
+				inverse = {
+					type = "toggle", name = L["Inverse"], desc = L["Toggle inverse healthbar."],
 					get = function() return oRAOPlayerTarget.db.profile.inverse end,
 					set = function(v) oRAOPlayerTarget:ToggleInverse(v) end,
 				},
-				[L["Reverse"]] = {
-					type = "toggle",
-					name = L["Reverse"],
-					desc = L["Toggle reverse order PT|PTT|PTTT or PTTT|PTT|PT."],
+				reverse = {
+					type = "toggle", name = L["Reverse"], desc = L["Toggle reverse order PT|PTT|PTTT or PTTT|PTT|PT."],
 					get = function() return oRAOPlayerTarget.db.profile.reverse end,
 					set = function(v) oRAOPlayerTarget:ToggleReverse(v) end,
 				},
-				[L["Numbers"]] = {
-					type = "toggle",
-					name = L["Numbers"],
-					desc = L["Toggle showing of PT numbers."],
+				numbers = {
+					type = "toggle", name = L["Numbers"], desc = L["Toggle showing of PT numbers."],
 					get = function() return oRAOPlayerTarget.db.profile.numbers end,
 					set = function(v) oRAOPlayerTarget:ToggleNumbers(v) end,
 				},
-				[L["Tooltips"]] = {
-					type = "toggle",
-					name = L["Tooltips"],
-					desc = L["Toggle showing of tooltips."],
+				tooltips = {
+					type = "toggle", name = L["Tooltips"], desc = L["Toggle showing of tooltips."],
 					get = function() return oRAOPlayerTarget.db.profile.tooltips end,
 					set = function(v) oRAOPlayerTarget.db.profile.tooltips = v end,
 				},				
-				[L["Deficit"]] = {
-					type = "toggle",
-					name = L["Deficit"],
-					desc = L["Toggle deficit health."],
+				deficit = {
+					type = "toggle", name = L["Deficit"], desc = L["Toggle deficit health."],
 					get = function() return oRAOPlayerTarget.db.profile.deficit end,
 					set = function(v) oRAOPlayerTarget:ToggleDeficit(v) end,
 				},
 				
-				[L["Clickcast"]] = {
-					type = "toggle",
-					name = L["Clickcast"],
-					desc = L["Toggle clickcast support."],
+				clickcast = {
+					type = "toggle", name = L["Click cast"], desc = L["Toggle clickcast support."],
 					get = function() return oRAOPlayerTarget.db.profile.clickcast end,
 					set = function(v) oRAOPlayerTarget.db.profile.clickcast = v end,
 				},
-				[L["Layout"]] = {
-					type = "text",
-					name = L["Layout"],
-					desc = L["Set the layout for the PT frames."],
+				layout = {
+					type = "text", name = L["Layout"], desc = L["Set the layout for the PT frames."],
 					get = function() return oRAOPlayerTarget.db.profile.layout end,
 					set = function(v) oRAOPlayerTarget:SetLayout(v) end,
 					validate = {L["Vertical"], L["Horizontal"]}
 				},
-				[L["Clicktarget"]] = {
-					type = "group", name = L["Clicktarget"], desc = L["Define clicktargets."],
+				clicktarget = {
+					type = "group", name = L["Click target"], desc = L["Define clicktargets."],
 					args = {
-						[L["Player"]] = {
-							name = L["Player"], type = "text", desc = L["Define the clicktarget for player."],
+						player = {
+							type = "text", name = L["Player"], desc = L["Define the clicktarget for player."],
 							get = function() return oRAOPlayerTarget.db.profile.ctplayer end,
 							set = function(v) oRAOPlayerTarget.db.profile.ctplayer = v end,
-							validate = { L["Player"], L["Target"], L["TargetTarget"] }
+							validate = { L["Player"], L["Target"], L["Target Target"] }
 						},
-						[L["Target"]] = {
-							name = L["Target"], type = "text", desc = L["Define the clicktarget for target."],
+						target = {
+							type = "text", name = L["Target"], desc = L["Define the clicktarget for target."],
 							get = function() return oRAOPlayerTarget.db.profile.cttarget end,
 							set = function(v) oRAOPlayerTarget.db.profile.cttarget = v end,
-							validate = { L["Player"], L["Target"], L["TargetTarget"] }
+							validate = { L["Player"], L["Target"], L["Target Target"] }
 						},
-						[L["TargetTarget"]] = {
-							name = L["TargetTarget"], type = "text", desc = L["Define the clicktarget for targettarget."],
+						targettarget = {
+							type = "text", name = L["Target Target"], desc = L["Define the clicktarget for targettarget."],
 							get = function() return oRAOPlayerTarget.db.profile.cttargettarget end,
 							set = function(v) oRAOPlayerTarget.db.profile.cttargettarget = v end,
-							validate = { L["Player"], L["Target"], L["TargetTarget"] }
+							validate = { L["Player"], L["Target"], L["Target Target"] }
 						},
 					},
 				},
-				[L["Show"]] = {
+				show = {
 					type = "group", name = L["Show"], desc = L["Define which frames you want to see."],
 					args = {
-						[L["Player"]] = {
-							name = L["Player"], type = "toggle", desc = L["Show player."],
+						player = {
+							type = "toggle", name = L["Player"], desc = L["Show player."],
 							get = function() return oRAOPlayerTarget.db.profile.showpt end,
 							set = function(v)
 								oRAOPlayerTarget.db.profile.showpt = v
 								oRAOPlayerTarget:UpdateFrameShow()
 							end,
 						},
-						[L["Target"]] = {
-							name = L["Target"], type = "toggle", desc = L["Show target."],
+						target = {
+							type = "toggle", name = L["Target"], desc = L["Show target."],
 							get = function() return oRAOPlayerTarget.db.profile.showptt end,
 							set = function(v)
 								oRAOPlayerTarget.db.profile.showptt = v
 								oRAOPlayerTarget:UpdateFrameShow()
 							end,
 						},
-						[L["TargetTarget"]] = {
-							name = L["TargetTarget"], type = "toggle", desc = L["Show targettarget."],
+						targettarget = {
+							type = "toggle", name = L["Target Target"], desc = L["Show targettarget."],
 							get = function() return oRAOPlayerTarget.db.profile.showpttt end,
 							set = function(v)
 								oRAOPlayerTarget.db.profile.showpttt = v
@@ -831,7 +812,6 @@ oRAOPlayerTarget.consoleOptions = {
 						},
 					},
 				},
-
 			},
 		},	
 	}	
@@ -1596,13 +1576,13 @@ end
 
 function oRAOPlayerTarget:UpdateConsole()
 	for k = 1, 10, 1 do
-				self.core.consoleOptions.args[L["pt"]].args[L["remove"]].args[tostring(k)].name = tostring(k).."."
-				self.core.consoleOptions.args[L["pt"]].args[L["set"]].args[tostring(k)].name = tostring(k).."."
+				self.core.consoleOptions.args["pt"].args["remove"].args[tostring(k)].name = tostring(k).."."
+				self.core.consoleOptions.args["pt"].args["set"].args[tostring(k)].name = tostring(k).."."
 	end
 	for k,v in pairs(self.db.profile.playertable) do
 		if self:IsValidRequest(v,true) then
-				self.core.consoleOptions.args[L["pt"]].args[L["remove"]].args[tostring(k)].name = tostring(k)..". "..v
-				self.core.consoleOptions.args[L["pt"]].args[L["set"]].args[tostring(k)].name = tostring(k)..". "..v
+				self.core.consoleOptions.args["pt"].args["remove"].args[tostring(k)].name = tostring(k)..". "..v
+				self.core.consoleOptions.args["pt"].args["set"].args[tostring(k)].name = tostring(k)..". "..v
 		end
 	end
 end
@@ -1629,4 +1609,3 @@ function oRAOPlayerTarget:OnTooltipUpdate()
 		end
 	end
 end
-

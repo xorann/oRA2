@@ -14,45 +14,39 @@ local surface = AceLibrary("Surface-1.0")
 ----------------------------
 
 L:RegisterTranslations("enUS", function() return {
-	["maintankoptional"] = true,
-	["mt"] = true,
 	["MainTank"] = true,
 	["Optional/MainTank"] = true,
 	["Options for the maintanks."] = true,
-	["Targettarget"] = true,
-	["Toggle TargetTarget frames."] = true,
 	["Scale"] = true,
 	["Set frame scale."] = true,
 	["Alpha"] = true,
 	["Set frame alpha."] = true,
-	["Raidicon"] = true,
+	["Raid icon"] = true,
 	["Toggle raid icons."] = true,
 	["Frames"] = true,
 	["Options for the maintank frames."] = true,
-	["Growup"] = true,
+	["Grow up"] = "Grow up",
 	["Toggle growup."] = true,
 	["Inverse"] = true,
 	["Toggle inverse healthbar."] = true,
 	["Deficit"] = true,
 	["Toggle deficit health."] = true,
-	["Clickcast"] = true,
+	["Click cast"] = true,
 	["Toggle clickcast support."] = true,
-	["Clicktarget"] = true,
+	["Click target"] = true,
 	["Define clicktargets."] = true,
 	["Define the clicktarget for maintank."] = true,
 	["Define the clicktarget for target."] = true,
 	["Define the clicktarget for targettarget."] = true,
 	["Target"] = true,
 	["Maintank"] = true,
-	["TargetTarget"] = true,
+	["Target Target"] = true,
 	["Nr of Maintanks shown."] = true,
 	["Nr Maintanks"] = true,
-	["Nr"] = true,
-	["Classcolor"] = true,
+	["Class color"] = true,
 	["Color healthbars by class."] = true,
-	["Enemycolor"] = true,
+	["Enemy color"] = true,
 	["Set the color for enemies. (used when classcolor is enabled)"] = true,
-	["Coloraggro"] = true,
 	["Color Aggro"] = true,
 	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = true,
 	["Backdrop"] = true,
@@ -76,43 +70,96 @@ L:RegisterTranslations("enUS", function() return {
 	["Horizontal"] = true,
 } end )
 
-L:RegisterTranslations("koKR", function() return {
+L:RegisterTranslations("ruRU", function() return {
+	["MainTank"] = "Основной танк (MT)",
+	["Optional/MainTank"] = "Дополнительно/MT",
+	["Options for the maintanks."] = "Опции для MT.",
+	["Scale"] = "Масштаб",
+	["Set frame scale."] = "Установка масштаба рамок.",
+	["Alpha"] = "Прозрачность",
+	["Set frame alpha."] = "Установка прозрачности рамок.",
+	["Raid icon"] = "Иконки рейда",
+	["Toggle raid icons."] = "Вкл./Выкл. иконок рейда.",
+	["Frames"] = "Рамки",
+	["Options for the maintank frames."] = "Опции для рамок MT.",
+	["Grow up"] = "Рост вверх",
+	["Toggle growup."] = "Вкл./Выкл. рост вверх.",
+	["Inverse"] = "Инверсия",
+	["Toggle inverse healthbar."] = "Вкл./Выкл. инверсии полосы здоровья.",
+	["Deficit"] = "Нехватка",
+	["Toggle deficit health."] = "Вкл./Выкл. отображения нехватки здоровья.",
+	["Click cast"] = "Click cast",
+	["Toggle clickcast support."] = "Toggle clickcast support.",
+	["Click target"] = "Нажатие на рамки",
+	["Define clicktargets."] = "Определение взятия в цель.",
+	["Define the clicktarget for maintank."] = "Определение взятия в цель по нажатии на рамку MT.",
+	["Define the clicktarget for target."] = "Определение взятия в цель по нажатии на рамку цели.",
+	["Define the clicktarget for targettarget."] = "Определение взятия в цель по нажатии на рамку цель цели.",
+	["Target"] = "Цель",
+	["Maintank"] = "MT",
+	["Target Target"] = "Цель цели",
+	["Nr of Maintanks shown."] = "Количество отображаемых MT.",
+	["Nr Maintanks"] = "Количество MT",
+	["Class color"] = "Цвет класса",
+	["Color healthbars by class."] = "Цветные полосы здоровья по классам.",
+	["Enemy color"] = "Цвет врага",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Установка цвета для врагов. (Используется, когда цвет класса включен)",
+	["Color Aggro"] = "Цвет аггро",
+	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Статус цвета аггро для MT на их именах. Оранжевый - имеет цель, Зеленый - танкует, Красный - не имеет аггро.",
+	["Backdrop"] = "Фон",
+	["Toggle the backdrop."] = "Вкл./Выкл. фона.",
+	["Highlight"] = "Выделение",
+	["Toggle highlighting your target."] = "Вкл./Выкл. выделения вашей цели.",
+	["Reverse"] = "Обратный порядок",
+	["Toggle reverse order MT|MTT|MTTT or MTTT|MTT|MT."] = "Вкл./Выкл. обратного порядка: PT|PTT|PTTT или PTTT|PTT|PT.",
+	["Numbers"] = "Номера",
+	["Toggle showing of MT numbers."] = "Вкл./Выкл. отображения номеров на MT.",
+	["Tooltips"] = "Подсказки",
+	["Toggle showing of tooltips."] = "Вкл./Выкл. отображения подсказок.",
+	["Show"] = "Отображение",
+	["Show maintank."] = "Отображение MT.",
+	["Show target."] = "Отображение цели.",
+	["Show targettarget."] = "Отображение цели цели.",
+	["Define which frames you want to see."] = "Установка отображаемых рамок.",
+	["Layout"] = "Располжение",
+	["Set the layout for the MT frames."] = "Установика расположения для рамок MT.",
+	["Vertical"] = "Вертикально",
+	["Horizontal"] = "Горизонтально",
+} end )
 
+L:RegisterTranslations("koKR", function() return {
 	["MainTank"] = "메인탱커창",
 	["Optional/MainTank"] = "부가/메인탱커",
 	["Options for the maintanks."] = "메인탱커에 대한 설정을 변경합니다.",
-	["Targettarget"] = "대상의대상",
-	["Toggle TargetTarget frames."] = "대상의 대상창을 토글합니다.",
 	["Scale"] = "크기",
 	["Set frame scale."] = "창의 크기를 설정합니다.",
 	["Alpha"] = "투명도",
 	["Set frame alpha."] = "창의 투명도를 설정합니다.",
-	["Raidicon"] = "공격대아이콘",
+	["Raid icon"] = "공격대아이콘",
 	["Toggle raid icons."] = "공격대 아이콘 표시를 토글합니다.",
 	["Frames"] = "창",
 	["Options for the maintank frames."] = "메인탱커 창에 관한 설정을 변경합니다.",
-	["Growup"] = "방향",
+	["Grow up"] = "방향",
 	["Toggle growup."] = "창의 진행 방향을 토글합니다.",
 	["Inverse"] = "반전",
 	["Toggle inverse healthbar."] = "생명력바 반전기능을 토글합니다.",
 	["Deficit"] = "결손치",
 	["Toggle deficit health."] = "생명력바 결손치 표시기능을 토글합니다.",
-	["Clickcast"] = "시전",
+	["Click cast"] = "시전",
 	["Toggle clickcast support."] = "클릭캐스트 기능 지원을 토글합니다.",
-	["Clicktarget"] = "클릭시대상선정",
+	["Click target"] = "클릭시대상선정",
 	["Define clicktargets."] = "클릭시 선택 대상을 정의합니다.",
 	["Define the clicktarget for maintank."] = "메인탱커를 클릭시 선택 대상을 정의합니다.",
 	["Define the clicktarget for target."] = "대상 클릭시 선택 대상을 정의합니다.",
 	["Define the clicktarget for targettarget."] = "대상의 대상을 클릭시 선택 대상을 정의합니다.",
 	["Target"] = "대상",
 	["Maintank"] = "메인탱커",
-	["TargetTarget"] = "대상의대상",
+	["Target Target"] = "대상의대상",
 	["Nr of Maintanks shown."] = "메인탱커의 번호를 표시합니다.",
 	["Nr Maintanks"] = "메인탱커의 수",
-	["Nr"] = "수",
-	["Classcolor"] = "직업별색상",
+	["Class color"] = "직업별색상",
 	["Color healthbars by class."] = "직업별로 생명력바의 색상을 변경합니다.",
-	["Enemycolor"] = "적색상",
+	["Enemy color"] = "적색상",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "적의 경우의 색상을 설정합니다. (직업별색상 기능을 사용할 때)",
 	["Color Aggro"] = "어그로 색상",
 	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "현재 상태에 따라서 탱커를 위한 어그로 색상을 표시합니다. 오렌지는 대상. 녹색은 탱커 적색은 어그로 없음입니다.",
@@ -138,45 +185,39 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	["maintankoptional"] = "MT选项",
-	["mt"] = "MT目标",
 	["MainTank"] = "MT目标",
 	["Optional/MainTank"] = "Optional/MainTank",
 	["Options for the maintanks."] = "MT选项",
-	["Targettarget"] = "目标的目标",
-	["Toggle TargetTarget frames."] = "显示目标的目标框体",
 	["Scale"] = "大小",
 	["Set frame scale."] = "设定框体大小",
 	["Alpha"] = "透明度",
 	["Set frame alpha."] = "设置框体透明度",
-	["Raidicon"] = "raid图标",
+	["Raid icon"] = "raid图标",
 	["Toggle raid icons."] = "显示raid图标",
 	["Frames"] = "框体",
 	["Options for the maintank frames."] = "MT框体选项",
-	["Growup"] = "往上增添",
+	["Grow up"] = "往上增添",
 	["Toggle growup."] = "选择往上增添",
 	["Inverse"] = "翻转",
 	["Toggle inverse healthbar."] = "选择翻转血条",
 	["Deficit"] = "亏损血量",
 	["Toggle deficit health."] = "显示亏损血量",
-	["Clickcast"] = "点击施法",
+	["Click cast"] = "点击施法",
 	["Toggle clickcast support."] = "选择点击施法支持",
-	["Clicktarget"] = "点击设定目标",
+	["Click target"] = "点击设定目标",
 	["Define clicktargets."] = "定义点击设定目标",
 	["Define the clicktarget for maintank."] = "定义点击MT设定的目标",
 	["Define the clicktarget for target."] = "定义点击MTT设定的目标",
 	["Define the clicktarget for targettarget."] = "定义点击MTTT设定的目标",
 	["Target"] = "目标",
 	["Maintank"] = "MT",
-	["TargetTarget"] = "目标的目标",
+	["Target Target"] = "目标的目标",
 	["Nr of Maintanks shown."] = "显示的MT数量",
 	["Nr Maintanks"] = "MT数量",
-	["Nr"] = "数量",
-	["Classcolor"] = "职业颜色",
+	["Class color"] = "职业颜色",
 	["Color healthbars by class."] = "把血条着色为职业颜色",
-	["Enemycolor"] = "敌人颜色",
+	["Enemy color"] = "敌人颜色",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "为敌人设置颜色(需要激活职业颜色)",
-	["Coloraggro"] = "仇恨颜色",
 	["Color Aggro"] = "仇恨颜色",
 	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "MT的名字边框用颜色来显示仇恨的状态。橘红是有目标，绿色是正在坦克，红色是没有仇恨",
 	["Backdrop"] = "背景",
@@ -198,49 +239,42 @@ L:RegisterTranslations("zhCN", function() return {
 	["Set the layout for the MT frames."] = "设置MT框架的布局",
 	["Vertical"] = "垂直",
 	["Horizontal"] = "水平",
-
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	["maintankoptional"] = "主坦選項",
-	["mt"] = "MT",
 	["MainTank"] = "主坦",
 	["Optional/MainTank"] = "可選/主坦",
 	["Options for the maintanks."] = "主坦選項",
-	["Targettarget"] = "目標的目標",
-	["Toggle TargetTarget frames."] = "顯示目標的目標框架",
 	["Scale"] = "大小",
 	["Set frame scale."] = "設定框架大小",
 	["Alpha"] = "透明度",
 	["Set frame alpha."] = "設定框架透明度",
-	["Raidicon"] = "團隊圖示",
+	["Raid icon"] = "團隊圖示",
 	["Toggle raid icons."] = "切換團隊圖示",
 	["Frames"] = "框體",
 	["Options for the maintank frames."] = "主坦框架選項",
-	["Growup"] = "往上排列",
+	["Grow up"] = "往上排列",
 	["Toggle growup."] = "切換往上排列",
 	["Inverse"] = "倒轉",
 	["Toggle inverse healthbar."] = "切換倒轉血條",
 	["Deficit"] = "減少血量",
 	["Toggle deficit health."] = "顯示減少血量",
-	["Clickcast"] = "點擊施法",
+	["Click cast"] = "點擊施法",
 	["Toggle clickcast support."] = "切換點擊施法支援",
-	["Clicktarget"] = "點擊設定目標",
+	["Click target"] = "點擊設定目標",
 	["Define clicktargets."] = "定義點擊設定目標",
 	["Define the clicktarget for maintank."] = "定義點擊MT設定的目標",
 	["Define the clicktarget for target."] = "定義點擊MTT設定的目標",
 	["Define the clicktarget for targettarget."] = "定義點擊MTTT設定的目標",
 	["Target"] = "目標",
 	["Maintank"] = "主坦",
-	["TargetTarget"] = "目標的目標",
+	["Target Target"] = "目標的目標",
 	["Nr of Maintanks shown."] = "顯示的主坦數量",
 	["Nr Maintanks"] = "主坦數量",
-	["Nr"] = "數量",
-	["Classcolor"] = "職業顏色",
+	["Class color"] = "職業顏色",
 	["Color healthbars by class."] = "依職業設定血條顏色",
-	["Enemycolor"] = "敵人顏色",
+	["Enemy color"] = "敵人顏色",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "為敵人設定顏色(需要使用職業顏色)",
-	["Coloraggro"] = "仇恨顏色",
 	["Color Aggro"] = "仇恨顏色",
 	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "主坦的名字邊框用顏色來顯示仇恨的狀態。橘紅是有目標，綠色是正在坦怪，紅色是沒有仇恨。",
 	["Backdrop"] = "背景",
@@ -266,7 +300,6 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Options for the maintanks."] = "Einstellungen f\195\188r die Maintanks.",
-	["Toggle TargetTarget frames."] = "Aktiviere TargetTarget Frames.",
 	["Scale"] = "Gr\195\182\195\159e",
 	["Set frame scale."] = "Setze Framegr\195\182\195\159e",
 	["Set frame alpha."] = "Setze Framealpha",
@@ -289,45 +322,39 @@ L:RegisterTranslations("deDE", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	--["maintankoptional"] = true,
-	--["mt"] = true,
-	--["MainTank"] = true,
+	["MainTank"] = "MainTank",
 	["Optional/MainTank"] = "Optionnel/MainTank",
 	["Options for the maintanks."] = "Optons concernant les maintanks.",
-	--["Targettarget"] = true,
-	["Toggle TargetTarget frames."] = "Affiche ou non les cadres de la cible de la cible.",
 	["Scale"] = "Taille",
 	["Set frame scale."] = "D\195\169termine la taille des cadres.",
 	["Alpha"] = "Transparence",
 	["Set frame alpha."] = "D\195\169termine la transparence des cadres.",
-	["Raidicon"] = "Ic\195\180nedeRaid",
+	["Raid icon"] = "Ic\195\180nedeRaid",
 	["Toggle raid icons."] = "Affiche ou non les ic\195\180nes de raid.",
 	["Frames"] = "Cadres",
 	["Options for the maintank frames."] = "Options concernant les cadres des maintanks.",
-	["Growup"] = "VersleHaut",
+	["Grow up"] = "VersleHaut",
 	["Toggle growup."] = "Ajoute ou non les MTs vers le haut.",
 	["Inverse"] = "Inverser",
 	["Toggle inverse healthbar."] = "Inverse ou non le sens de remplissage des barres de vie.",
 	["Deficit"] = "D\195\169ficit",
 	["Toggle deficit health."] = "Affiche ou non le d\195\169ficit en vie.",
-	--["Clickcast"] = true,
+	["Click cast"] = "Click cast",
 	["Toggle clickcast support."] = "Active ou non le support des addons de \"clickcasting\".",
-	--["Clicktarget"] = true,
+	["Click target"] = "Click target",
 	["Define clicktargets."] = "D\195\169termine la cible des clics.",
 	["Define the clicktarget for maintank."] = "D\195\169termine la cible lors du clic sur le cadre du maintank.",
 	["Define the clicktarget for target."] = "D\195\169termine la cible lors du clic sur le cadre de la cible.",
 	["Define the clicktarget for targettarget."] = "D\195\169termine la cible lors du clic sur le cadre de la cible de la cible.",
 	["Target"] = "Cible",
-	--["Maintank"] = true,
-	["TargetTarget"] = "CibledelaCible",
+	["Maintank"] = "Maintank",
+	["Target Target"] = "CibledelaCible",
 	["Nr of Maintanks shown."] = "Nombre de maintanks \195\160 afficher.",
 	["Nr Maintanks"] = "Nbre de maintanks",
-	["Nr"] = "N\194\176",
-	["Classcolor"] = "CouleurdeClasse",
+	["Class color"] = "CouleurdeClasse",
 	["Color healthbars by class."] = "Colore les barres de vie selon la classe.",
-	["Enemycolor"] = "CouleurEnnemi",
+	["Enemy color"] = "CouleurEnnemi",
 	["Set the color for enemies. (used when classcolor is enabled)"] = "D\195\169termine la couleur pour les ennemis. (utilis\195\169 si CouleurdeClasse est activ\195\169)",
-	--["Coloraggro"] = true,
 	["Color Aggro"] = "Couleur d'aggro",
 	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des MTs selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent, Rouge s'ils n'ont pas l'aggro.",
 	["Backdrop"] = "Fond",
@@ -347,15 +374,15 @@ L:RegisterTranslations("frFR", function() return {
 	["Define which frames you want to see."] = "D\195\169termine les cadres que vous souhaitez voir.",
 	["Layout"] = "Style",
 	["Set the layout for the MT frames."] = "D\195\169termine le style des cadres des MTs.",
-	--["Vertical"] = true,
-	--["Horizontal"] = true,
+	["Vertical"] = "Vertical",
+	["Horizontal"] = "Horizontal",
 } end )
 
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
 
-oRAOMainTank = oRA:NewModule(L["maintankoptional"])
+oRAOMainTank = oRA:NewModule("maintankoptional")
 oRAOMainTank.defaults = {
 	raidicon = true,
 	alpha = 1,
@@ -364,9 +391,9 @@ oRAOMainTank.defaults = {
 	inverse = false,
 	deficit = false,
 	clickcast = true,
-	ctmaintank = L["Maintank"],
-	cttarget = L["Target"],
-	cttargettarget = L["TargetTarget"],
+	ctmaintank = "maintank",
+	cttarget = "target",
+	cttargettarget = "targettarget",
 	nrmts = 10,
 	classcolor = true,
 	enemycolor = "cc2200",
@@ -383,36 +410,26 @@ oRAOMainTank.defaults = {
 }
 oRAOMainTank.optional = true
 oRAOMainTank.name = L["Optional/MainTank"]
-oRAOMainTank.consoleCmd = L["mt"]
+oRAOMainTank.consoleCmd = "mt"
 oRAOMainTank.consoleOptions = {
-	type = "group",
-	desc = L["Options for the maintanks."],
-	name = L["MainTank"],
+	type = "group", name = L["MainTank"], desc = L["Options for the maintanks."],
 	args = {
-		[L["Nr"]] = {
-			type = "range",
-			name = L["Nr Maintanks"],
-			desc = L["Nr of Maintanks shown."],
+		nr = {
+			type = "range", name = L["Nr Maintanks"], desc = L["Nr of Maintanks shown."],
 			get = function() return oRAOMainTank.db.profile.nrmts end,
 			set = function(v) oRAOMainTank:SetNrMaintanks(v) end,
 			min = 0, max = 10, step = 1,
 		},	
-		[L["Frames"]] = {
-			type = "group",
-			desc = L["Options for the maintank frames."],
-			name = L["Frames"],
+		frames = {
+			type = "group", name = L["Frames"], desc = L["Options for the maintank frames."],
 			args = {
-				[L["Classcolor"]] = {
-					type = "toggle",
-					name = L["Classcolor"],
-					desc = L["Color healthbars by class."],
+				classcolor = {
+					type = "toggle", name = L["Class color"], desc = L["Color healthbars by class."],
 					get = function() return oRAOMainTank.db.profile.classcolor end,
 					set = function(v) oRAOMainTank:SetClassColor(v) end,
 				},
-				[L["Enemycolor"]] = {
-					type = "color",
-					name = L["Enemycolor"],
-					desc = L["Set the color for enemies. (used when classcolor is enabled)"],
+				enemycolor = {
+					type = "color", name = L["Enemy color"], desc = L["Set the color for enemies. (used when classcolor is enabled)"],
 					get = function()
 						local _, r, g, b = paintchips:GetRGBPercent( oRAOMainTank.db.profile.enemycolor )
 						return r, g, b
@@ -424,159 +441,127 @@ oRAOMainTank.consoleOptions = {
 					end,
 					disabled = function() return not oRAOMainTank.db.profile.classcolor end,					
 				},
-				[L["Coloraggro"]] = {
-					type = "toggle",
-					name = L["Color Aggro"],
-					desc = L["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."],
+				coloraggro = {
+					type = "toggle", name = L["Color Aggro"], desc = L["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."],
 					get = function() return oRAOMainTank.db.profile.coloraggro end,
 					set = function(v) oRAOMainTank.db.profile.coloraggro = v end,
 				},
-				[L["Backdrop"]] = {
-					type = "toggle",
-					name = L["Backdrop"],
-					desc = L["Toggle the backdrop."],
+				backdrop = {
+					type = "toggle", name = L["Backdrop"], desc = L["Toggle the backdrop."],
 					get = function() return oRAOMainTank.db.profile.backdrop end,
 					set = function(v) oRAOMainTank.db.profile.backdrop = v end,
 				},
-				[L["Highlight"]] = {
-					type = "toggle",
-					name = L["Highlight"],
-					desc = L["Toggle highlighting your target."],
+				highlight = {
+					type = "toggle", name = L["Highlight"], desc = L["Toggle highlighting your target."],
 					get = function() return oRAOMainTank.db.profile.highlight end,
 					set = function(v) oRAOMainTank.db.profile.highlight = v end,
 				},
 		
-				[L["Scale"]] = {
-					type = "range",
-					name = L["Scale"],
-					desc = L["Set frame scale."],
+				scale = {
+					type = "range", name = L["Scale"], desc = L["Set frame scale."],
 					get = function() return oRAOMainTank.db.profile.scale end,
 					set = function(v) oRAOMainTank:SetScale(v) end,
 					min = 0.1,
 					max = 2,
 				},				
-
-				[L["Alpha"]] = {
-					type = "range",
-					name = L["Alpha"],
-					desc = L["Set frame alpha."],
+				alpha = {
+					type = "range", name = L["Alpha"], desc = L["Set frame alpha."],
 					get = function() return oRAOMainTank.db.profile.alpha end,
 					set = function(v) oRAOMainTank:SetAlpha(v) end,
 					min = 0.1,
 					max = 1,
 				},
-	
-				[L["Raidicon"]] = {
-					type = "toggle",
-					name = L["Raidicon"],
-					desc = L["Toggle raid icons."],
+				raidicon = {
+					type = "toggle", name = L["Raid icon"], desc = L["Toggle raid icons."],
 					get = function() return oRAOMainTank.db.profile.raidicon end,
 					set = function(v) oRAOMainTank:ToggleRaidIcon(v) end,
 				},
-
-				[L["Growup"]] = {
-					type = "toggle",
-					name = L["Growup"],
-					desc = L["Toggle growup."],
+				growup = {
+					type = "toggle", name = L["Grow up"], desc = L["Toggle growup."],
 					get = function() return oRAOMainTank.db.profile.growup end,
 					set = function(v) oRAOMainTank:ToggleGrowup(v) end,
 				},
 
-				[L["Inverse"]] = {
-					type = "toggle",
-					name = L["Inverse"],
-					desc = L["Toggle inverse healthbar."],
+				inverse = {
+					type = "toggle", name = L["Inverse"], desc = L["Toggle inverse healthbar."],
 					get = function() return oRAOMainTank.db.profile.inverse end,
 					set = function(v) oRAOMainTank:ToggleInverse(v) end,
 				},
-				[L["Reverse"]] = {
-					type = "toggle",
-					name = L["Reverse"],
-					desc = L["Toggle reverse order MT|MTT|MTTT or MTTT|MTT|MT."],
+				reverse = {
+					type = "toggle", name = L["Reverse"], desc = L["Toggle reverse order MT|MTT|MTTT or MTTT|MTT|MT."],
 					get = function() return oRAOMainTank.db.profile.reverse end,
 					set = function(v) oRAOMainTank:ToggleReverse(v) end,
 				},
-				[L["Numbers"]] = {
-					type = "toggle",
-					name = L["Numbers"],
-					desc = L["Toggle showing of MT numbers."],
+				numbers = {
+					type = "toggle", name = L["Numbers"], desc = L["Toggle showing of MT numbers."],
 					get = function() return oRAOMainTank.db.profile.numbers end,
 					set = function(v) oRAOMainTank:ToggleNumbers(v) end,
 				},
-				[L["Tooltips"]] = {
-					type = "toggle",
-					name = L["Tooltips"],
-					desc = L["Toggle showing of tooltips."],
+				tooltips = {
+					type = "toggle", name = L["Tooltips"], desc = L["Toggle showing of tooltips."],
 					get = function() return oRAOMainTank.db.profile.tooltips end,
 					set = function(v) oRAOMainTank.db.profile.tooltips = v end,
 				},				
-				[L["Deficit"]] = {
-					type = "toggle",
-					name = L["Deficit"],
-					desc = L["Toggle deficit health."],
+				deficit = {
+					type = "toggle", name = L["Deficit"], desc = L["Toggle deficit health."],
 					get = function() return oRAOMainTank.db.profile.deficit end,
 					set = function(v) oRAOMainTank:ToggleDeficit(v) end,
 				},
-				
-				[L["Clickcast"]] = {
-					type = "toggle",
-					name = L["Clickcast"],
-					desc = L["Toggle clickcast support."],
+				clickcast = {
+					type = "toggle", name = L["Click cast"], desc = L["Toggle clickcast support."],
 					get = function() return oRAOMainTank.db.profile.clickcast end,
 					set = function(v) oRAOMainTank.db.profile.clickcast = v end,
 				},
-				[L["Layout"]] = {
-					type = "text",
-					name = L["Layout"],
-					desc = L["Set the layout for the MT frames."],
+				layout = {
+					type = "text", name = L["Layout"], desc = L["Set the layout for the MT frames."],
 					get = function() return oRAOMainTank.db.profile.layout end,
 					set = function(v) oRAOMainTank:SetLayout(v) end,
 					validate = {L["Vertical"], L["Horizontal"]}
 				},
-				[L["Clicktarget"]] = {
-					type = "group", name = L["Clicktarget"], desc = L["Define clicktargets."],
+				clicktarget = {
+					type = "group", name = L["Click target"], desc = L["Define clicktargets."],
 					args = {
-						[L["Maintank"]] = {
-							name = L["Maintank"], type = "text", desc = L["Define the clicktarget for maintank."],
+						maintank = {
+							type = "text", name = L["Maintank"], desc = L["Define the clicktarget for maintank."],
 							get = function() return oRAOMainTank.db.profile.ctmaintank end,
 							set = function(v) oRAOMainTank.db.profile.ctmaintank = v end,
-							validate = { L["Maintank"], L["Target"], L["TargetTarget"] }
+							validate = { L["Maintank"], L["Target"], L["Target Target"] }
 						},
-						[L["Target"]] = {
-							name = L["Target"], type = "text", desc = L["Define the clicktarget for target."],
+						target = {
+							type = "text", name = L["Target"], desc = L["Define the clicktarget for target."],
 							get = function() return oRAOMainTank.db.profile.cttarget end,
 							set = function(v) oRAOMainTank.db.profile.cttarget = v end,
-							validate = { L["Maintank"], L["Target"], L["TargetTarget"] }
+							validate = { L["Maintank"], L["Target"], L["Target Target"] }
 						},
-						[L["TargetTarget"]] = {
-							name = L["TargetTarget"], type = "text", desc = L["Define the clicktarget for targettarget."],
+						targettarget = {
+							type = "text", name = L["Target Target"], desc = L["Define the clicktarget for targettarget."],
 							get = function() return oRAOMainTank.db.profile.cttargettarget end,
 							set = function(v) oRAOMainTank.db.profile.cttargettarget = v end,
-							validate = { L["Maintank"], L["Target"], L["TargetTarget"] }
+							validate = { L["Maintank"], L["Target"], L["Target Target"] }
 						},
 					},
 				},
-				[L["Show"]] = {
+				show = {
 					type = "group", name = L["Show"], desc = L["Define which frames you want to see."],
 					args = {
-						[L["Maintank"]] = {
-							name = L["Maintank"], type = "toggle", desc = L["Show maintank."],
+						maintank = {
+							type = "toggle", name = L["Maintank"], desc = L["Show maintank."],
 							get = function() return oRAOMainTank.db.profile.showmt end,
 							set = function(v)
 								oRAOMainTank.db.profile.showmt = v
 								oRAOMainTank:UpdateFrameShow()
 							end,
 						},
-						[L["Target"]] = {
-							name = L["Target"], type = "toggle", desc = L["Show target."],
+						target = {
+							type = "toggle", name = L["Target"], desc = L["Show target."],
 							get = function() return oRAOMainTank.db.profile.showmtt end,
 							set = function(v)
 								oRAOMainTank.db.profile.showmtt = v
 								oRAOMainTank:UpdateFrameShow()
 							end,
 						},
-						[L["TargetTarget"]] = {
-							name = L["TargetTarget"], type = "toggle", desc = L["Show targettarget."],
+						targettarget = {
+							type = "toggle", name = L["Target Target"], desc = L["Show targettarget."],
 							get = function() return oRAOMainTank.db.profile.showmttt end,
 							set = function(v)
 								oRAOMainTank.db.profile.showmttt = v
@@ -585,7 +570,6 @@ oRAOMainTank.consoleOptions = {
 						},
 					},
 				},
-
 			},
 		},	
 	}	

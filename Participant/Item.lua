@@ -40,6 +40,21 @@ L:RegisterTranslations("enUS", function() return {
 	["Disable Responding to Item Checks."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Item"] = "Предметы",
+	["Options for item checks."] = "Опции для проверки предметов.",
+	["SacredCandle"] = "Священная свеча",
+	["ArcanePowder"] = "Порошок чар",
+	["WildThornroot"] = "Дикий шипокорень",
+	["Ankh"] = "Крест",
+	["SoulShard"] = "Осколок души",
+	["SymbolofDivinity"] = "Знак божественности",
+	["FlashPowder"] = "Воспламеняющийся порошок",
+	["Participant/Item"] = "Участник/Предметы",
+	["Disable Checks"] = "Отключить проверку",
+	["Disable Responding to Item Checks."] = "Отключить ответ на проверку предметов.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Item"] = "아이템",

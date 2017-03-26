@@ -34,6 +34,19 @@ L:RegisterTranslations("enUS", function() return {
 	["n/a"] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Version"] = "Версия",
+	["Options for version checks."] = "Опции для проверки версии.",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Unknown"] = "Неизвестно",
+	["Name"] = "Имя",
+	["Optional/Version"] = "Дополнительно/Версия",
+	["Perform version check"] = "Выполнить проверку версии",
+	["Check the raid's versions."] = "Проверка версий рейда.",
+	["n/a"] = "недоступно",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Version"] = "버전",

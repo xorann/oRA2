@@ -21,6 +21,14 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle the Resurrection Monitor."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Resurrection Monitor"] = "Монитор воскрешения",
+	["Optional/Resurrection"] = "Дополнительно/Воскрешение",
+	["Options for resurrection."] = "Опции для воскрешения.",
+	["Toggle"] = "Вкл./Выкл.",
+	["Toggle the Resurrection Monitor."] = "Вкл./Выкл. монитор воскрешения.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Resurrection Monitor"] = "부활상태 모니터",

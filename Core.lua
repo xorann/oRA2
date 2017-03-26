@@ -5,6 +5,7 @@ local L = AceLibrary("AceLocale-2.2"):new("oRA")
 
 local CTRAversion = "1.541"
 
+local waterfall = AceLibrary("Waterfall-1.0")
 local surface = AceLibrary("Surface-1.0")
 
 surface:Register("Otravi", "Interface\\AddOns\\oRA2\\Textures\\otravi")
@@ -14,6 +15,8 @@ surface:Register("Charcoal", "Interface\\AddOns\\oRA2\\textures\\charcoal")
 surface:Register("BantoBar", "Interface\\AddOns\\oRA2\\textures\\bantobar")
 surface:Register("Perl", "Interface\\AddOns\\oRA2\\textures\\perl")
 surface:Register("Striped", "Interface\\AddOns\\oRA2\\textures\\striped")
+surface:Register("glaze",    "Interface\\AddOns\\oRA2\\Textures\\glaze"   )
+surface:Register("litestep", "Interface\\AddOns\\oRA2\\Textures\\litestep")
 
 ----------------------------
 --      Localization      --
@@ -38,6 +41,23 @@ L:RegisterTranslations("enUS", function() return {
     ["debug"] = true,
     ["Debugging"] = true,
     ["Show debug messages."] = true,
+} end)
+
+L:RegisterTranslations("ruRU", function() return {
+	["You are now AFK"] = "Вы временно отсутствуете",
+	["You are now DND"] = "Вы заняты",
+	["You have to be Raid Leader or Assistant to do that."] = "Вы должны быть Рейд лидером или помощником, чтобы сделать это.",
+	["Requested a status update."] = "Требуется обновление данных.",
+	["Use shorthands"] = "Использовать сокращения",
+	["Toggle using of CTRA shorthands"] = "Вкл./Выкл. использования CTRA сокращений.",
+	[" ...hic!"] = " ...ик!",
+	["Request status"] = "Запрос статуса",
+	["Request a status update"] = "Запрос на обновление данных.",
+	["Textures"] = "Текстуры",
+	["Set all statusbar textures."] = "Установить все statusbar текстуры.",	
+	
+	["Debugging"] = "Отладка",
+    ["Show debug messages."] = "Показывать отладочные сообщения.",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
@@ -179,7 +199,9 @@ oRA.consoleOptions = {
 
 oRA:RegisterDB("oRADB", "oRADBPerChar")
 oRA:RegisterDefaults("profile", oRA.defaults)
-oRA:RegisterChatCommand({"/ora", "/oRA"}, oRA.consoleOptions )
+oRA:RegisterChatCommand({"/oracl", "/oRAcl"}, oRA.consoleOptions )
+oRA:RegisterChatCommand({"/ora", "/oRA"}, function() waterfall:Open('oRA') end)
+waterfall:Register('oRA', 'aceOptions', oRA.consoleOptions, 'title','oRA 2.0','colorR', 0.2, 'colorG', 0.6, 'colorB', 0.2) 
 
 local isDebugging = false
 function oRA:IsDebugging()

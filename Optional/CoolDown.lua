@@ -24,6 +24,14 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle the CoolDown Monitor."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["CoolDown Monitor"] = "Монитор перезарядки",
+	["Optional/CoolDown"] = "Дополнительно/Перезарядка",
+	["Options for CoolDown."] = "Опции для перезарядки.",
+	["Toggle"] = "Вкл./Выкл.",
+	["Toggle the CoolDown Monitor."] = "Вкл./Выкл. монитор перезарядки.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	["CoolDown Monitor"] = "재사용대기시간 모니터",
 	["Optional/CoolDown"] = "부가/재사용대기시간",

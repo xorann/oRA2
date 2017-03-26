@@ -45,6 +45,30 @@ L:RegisterTranslations("enUS", function() return {
 
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["MainTank"] = "Основной танк (MT)",
+	["Options for the maintanks."] = "Опции для MT.",
+	["Set Maintank"] = "Установить MT",
+	["Set a maintank."]= "Установка MT.",
+	["<nr> <name>"] = "<nr> <name>",
+	["<nr>"] = "<nr>",
+	["<name>"] = "<name>",
+	["Remove Maintank"] = "Удалить MT",
+	["Remove a maintank."] = "Удаление MT.",
+	["Removed maintank: "] = "Удален основной танк: ",
+	["Set maintank: "] = "Установлен основной танк: ",
+	["Leader/MainTank"] = "Лидер/MT",
+	["Broadcast Maintanks"] = "Передача списка MT",
+	["Send the raid your maintanks."] = "Отправить рейду список танков.",
+
+	["free"] = "На свободную",
+	["Set target on a free mt-slot"] = "Назначение цели на свободную mt-ячейку.",
+	["All"] = "ВСЕХ",
+	["Delete all Maintanks"] = "Удаление всех MT.",
+	
+	["<Not Assigned>"] = "<Не назначено>",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["MainTank"] = "메인탱커",

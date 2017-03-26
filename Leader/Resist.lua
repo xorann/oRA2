@@ -39,6 +39,28 @@ L:RegisterTranslations("enUS", function() return {
 	["Check the raid's resistances."] = true,
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	["Options for resistance checks."] = "Опции для проверки сопротивлений.",
+	["Leader/Resist"] = "Лидер/Сопротивление",
+	["Name"] = "Имя",
+	["Fire"] = "Огонь",
+	["Nature"] = "Природа",
+	["Frost"] = "Лёд",
+	["Shadow"] = "Тьма",
+	["Arcane"] = "Тайная магия",
+	["Resistance checks disabled."] = "Проверка сопротивлений отключена.",
+	["Resistances"] = "Сопротивления",
+	["Fr"] = "Ог",
+	["Ft"] = "Лед",
+	["N"] = "П",
+	["A"] = "ТМ",
+	["S"] = "Т",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Perform resistance check"] = "Выполнить проверку сопротивления",
+	["Check the raid's resistances."] = "Проверка сопротивлений рейда.",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 
 	["Options for resistance checks."] = "공격대원 저항 확인 설정",

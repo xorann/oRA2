@@ -24,6 +24,15 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle the minimap button."] = true,
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	tablethint = "|cffeda55fCtrl+Alt+Левый клик|r - чтобы отключить oRA полностью. |cffeda55fAlt+перетаскивание|r - чтобы переместить MT, цели игроков и мониторы.",
+	tablethint_disabled = "oRA в данный момент отключен. |cffeda55fШёлкните|r, чтобы включить.",
+	["Hidden"] = "Скрыть",
+	["Shown"] = "Отобразить",
+	["Minimap"] = "Миникарта",
+	["Toggle the minimap button."] = "Вкл./Выкл. кнопку миникарты.",
+} end)
+
 L:RegisterTranslations("koKR", function() return {
 	tablethint = "|cffeda55fCtrl Alt 클릭시|r oRA를 완전히 사용하지 않습니다. Alt키를 누른 상태에서 메인탱커창와 플레이어탱커창과 각종 모니터창을 드래그해서 이동할 수 있습니다.",
 	tablethint_disabled = "oRA 는 현재 사용중지 중입니다. |cffeda55f클릭시|r 사용합니다.",
