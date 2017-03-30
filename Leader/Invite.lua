@@ -331,7 +331,7 @@ oRALInvite.consoleOptions = {
 				if input and input == "" or string.gsub(input, " ", "") == "" then
 					input = nil
 				end
-				oRALInvite:InviteToGuild(input)
+				oRALInvite:InviteGuild(input)
 			end,
 			validate = function(input)
 				return (input == nil or input == "") or (tonumber(input) ~= nil and (tonumber(input) > 1 and tonumber(input) <= MAX_PLAYER_LEVEL))
