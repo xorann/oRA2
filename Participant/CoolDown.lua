@@ -147,7 +147,7 @@ function oRAPCoolDown:SPELLCAST_STOP( arg1 )
 		self:SendMessage("CD 4 60", true) -- only oRA2 clients will receive this cooldown I just numbered on.
 	end
 	local _, c = UnitClass("player")	
-	if c == "DRUID" then
+	if c == "DRUID" and not self.innervate then
 		self:ScheduleEvent( "oRAPCoolDown_InnervateCheck", 
 		function() 
 			local i = 1;
