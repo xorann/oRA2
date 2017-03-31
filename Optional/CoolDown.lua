@@ -144,10 +144,22 @@ end
 function oRAOCoolDown:oRA_CoolDown(msg, author)
 	msg = self:CleanMessage(msg)
 	local _,_,what,length = string.find( msg, "^CD (%d+) (%d+)")
+	local _,_,_,_,deci = string.find( msg, "^CD (%d+) (%d+).(%d+)");
 	if author and what and time then
 		if not self.db.profile.cooldowns then self.db.profile.cooldowns = {} end
-		self.db.profile.cooldowns[author] = time() + tonumber(length)*60
-		self:StartCoolDown( author, tonumber(length)*60)
+		if what == "5" then
+			author = "innervate_"..author
+			if deci then
+				self.db.profile.cooldowns[author] = time() + tonumber(length.."."..deci)
+				self:StartCoolDown( author, tonumber(length.."."..deci))
+			else
+				self.db.profile.cooldowns[author] = time() + tonumber(length)
+				self:StartCoolDown( author, tonumber(length))
+			end
+		else
+			self.db.profile.cooldowns[author] = time() + tonumber(length)*60
+			self:StartCoolDown( author, tonumber(length)*60)
+		end
 	end
 end
 
@@ -265,15 +277,25 @@ end
 
 function oRAOCoolDown:StartCoolDown( player, time )
 	if not self.enabled or self.db.profile.hidden then return end
+	local innervate = nil
+	local player2 = player
+	if string.find(player, "^innervate_") then
+		player = string.sub(player,11)
+		innervate = true
+	end
 	local unit = roster:GetUnitObjectFromName( player )
 	if not unit then return end
 	self:RegisterCandyBarGroup("oRAOCoolDownGroup")
 	self:SetCandyBarGroupPoint("oRAOCoolDownGroup", "TOP", self.text, "BOTTOM", 0, -5 )
-	self:RegisterCandyBar( "oRAOCoolDown "..player, time, player, nil, unit.class)
-	self:RegisterCandyBarWithGroup( "oRAOCoolDown "..player, "oRAOCoolDownGroup")
-	self:SetCandyBarWidth( "oRAOCoolDown "..player, 150)
-	self:SetCandyBarTexture( "oRAOCoolDown "..player, surface:Fetch(self.core.db.profile.bartexture))
-	self:StartCandyBar( "oRAOCoolDown "..player, true)
+	if innervate then
+		self:RegisterCandyBar( "oRAOCoolDown "..player2, time, player, nil, "Mage")
+	else
+		self:RegisterCandyBar( "oRAOCoolDown "..player2, time, player, nil, unit.class)
+	end
+	self:RegisterCandyBarWithGroup( "oRAOCoolDown "..player2, "oRAOCoolDownGroup")
+	self:SetCandyBarWidth( "oRAOCoolDown "..player2, 150)
+	self:SetCandyBarTexture( "oRAOCoolDown "..player2, surface:Fetch(self.core.db.profile.bartexture))
+	self:StartCandyBar( "oRAOCoolDown "..player2, true)
 end
 
 function oRAOCoolDown:StopCoolDown( player )

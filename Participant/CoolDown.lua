@@ -97,6 +97,7 @@ function oRAPCoolDown:OnEnable()
 	self.spell = nil
 	self.sscasting = nil
 	self.rescasting = nil
+	self.innervate = nil
 
 	local _, c = UnitClass("player")
 	if c == "DRUID" or c == "WARLOCK" or c == "PALADIN" then
@@ -144,6 +145,29 @@ function oRAPCoolDown:SPELLCAST_STOP( arg1 )
 		self.rescasting = nil
 		self.spell = nil
 		self:SendMessage("CD 4 60", true) -- only oRA2 clients will receive this cooldown I just numbered on.
+	end
+	local _, c = UnitClass("player")	
+	if c == "DRUID" and not self.innervate then
+		self:ScheduleEvent( "oRAPCoolDown_InnervateCheck", 
+		function() 
+			local i = 1;
+			local spellName,start,duration,timeleft,loop
+			loop = true
+			while loop do 
+				spellName = GetSpellName(i, BOOKTYPE_SPELL);
+				if string.lower(spellName) == "innervate" then 
+					start,duration = GetSpellCooldown(i, BOOKTYPE_SPELL);
+					timeleft = duration - (GetTime()-start)
+					if timeleft > 300 and not self.innervate then
+						self:SendMessage("CD 5 "..timeleft)
+						self.innervate = true;
+						self:ScheduleEvent( "oRAPCoolDown_ResetInnervate", function() self.innervate = nil end, timeleft)
+					end
+					loop = false
+				end;
+				i = i + 1;
+			end
+		end, 1.5)
 	end
 end
 
