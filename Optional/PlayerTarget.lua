@@ -449,9 +449,9 @@ oRAOPlayerTarget.defaults = {
 	inverse = false,
 	deficit = false,
 	clickcast = true,
-	ctplayer = "player",
-	cttarget = "target",
-	cttargettarget = "targettarget",
+	ctplayer = L["Player"],
+	cttarget = L["Target"],
+	cttargettarget = L["Target Target"],
 	nrpts = 10,
 	classcolor = true,
 	enemycolor = "cc2200",
@@ -1330,7 +1330,7 @@ function oRAOPlayerTarget:GetUnit(f, click)
 		if f.type == "pttt" then c = self.db.profile.cttargettarget end
 		if c == L["Player"] then return f.unit end
 		if c == L["Target"] then return f.unit .. "target" end
-		if c == L["TargetTarget"] then return f.unit .. "targettarget" end
+		if c == L["Target Target"] then return f.unit .. "targettarget" end
 	end
 end
 
