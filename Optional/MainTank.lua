@@ -391,9 +391,9 @@ oRAOMainTank.defaults = {
 	inverse = false,
 	deficit = false,
 	clickcast = true,
-	ctmaintank = "maintank",
-	cttarget = "target",
-	cttargettarget = "targettarget",
+	ctmaintank = L["Maintank"],
+	cttarget = L["Target"],
+	cttargettarget = L["Target Target"],
 	nrmts = 10,
 	classcolor = true,
 	enemycolor = "cc2200",
@@ -1079,7 +1079,7 @@ function oRAOMainTank:GetUnit(f, click)
 		if f.type == "mttt" then c = self.db.profile.cttargettarget end
 		if c == L["Maintank"] then return f.unit end
 		if c == L["Target"] then return f.unit .. "target" end
-		if c == L["TargetTarget"] then return f.unit .. "targettarget" end
+		if c == L["Target Target"] then return f.unit .. "targettarget" end
 	end
 end
 
