@@ -151,21 +151,24 @@ function oRAPCoolDown:SPELLCAST_STOP( arg1 )
 		self:ScheduleEvent( "oRAPCoolDown_InnervateCheck", 
 		function() 
 			local i = 1;
-			local spellName,start,duration,timeleft,loop
-			loop = true
-			while loop do 
-				spellName = GetSpellName(i, BOOKTYPE_SPELL);
-				if string.lower(spellName) == "innervate" then 
-					start,duration = GetSpellCooldown(i, BOOKTYPE_SPELL);
-					timeleft = duration - (GetTime()-start)
-					if timeleft > 300 and not self.innervate then
-						self:SendMessage("CD 5 "..timeleft)
-						self.innervate = true;
-						self:ScheduleEvent( "oRAPCoolDown_ResetInnervate", function() self.innervate = nil end, timeleft)
+			local spellName,start,duration,timeleft
+			while true do 
+				spellName = GetSpellName(i, BOOKTYPE_SPELL)
+				if spellName then
+					if spellName == BS["Innervate"] then 
+						start, duration = GetSpellCooldown(i, BOOKTYPE_SPELL)
+						timeleft = duration - (GetTime() - start)
+						if timeleft > 300 and not self.innervate then
+							self:SendMessage("CD 5 "..timeleft)
+							self.innervate = true;
+							self:ScheduleEvent( "oRAPCoolDown_ResetInnervate", function() self.innervate = nil end, timeleft)
+						end
+						break
 					end
-					loop = false
-				end;
-				i = i + 1;
+				else
+					break
+				end
+				i = i + 1
 			end
 		end, 1.5)
 	end
