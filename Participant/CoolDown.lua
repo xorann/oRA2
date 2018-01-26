@@ -19,6 +19,7 @@ L:RegisterTranslations("enUS", function() return {
 	["gain Soulstone Resurrection"] = true,
 	["gains Soulstone Resurrection"] = true,
 	["Participant/CoolDown"] = true,
+	["You gain Shield Wall"] = true,
 } end )
 
 L:RegisterTranslations("ruRU", function() return {
@@ -31,6 +32,7 @@ L:RegisterTranslations("ruRU", function() return {
 L:RegisterTranslations("deDE", function() return {
 	["gain Soulstone Resurrection"] = "Ihr bekommt 'Seelenstein%-Auferstehung'",
 	["gains Soulstone Resurrection"] = "bekommt 'Seelenstein%-Auferstehung'",
+	["You gain Shield Wall"] = true, -- translation missing
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -112,6 +114,9 @@ function oRAPCoolDown:OnEnable()
 		end
 	elseif c == "SHAMAN" then
 		self:Hook("UseSoulstone", true)
+	elseif c == "WARRIOR" then
+		self:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS", "CheckShieldWall")
+		self:RegisterEvent("SPELLCAST_STOP")
 	end
 end
 
@@ -172,6 +177,39 @@ function oRAPCoolDown:SPELLCAST_STOP( arg1 )
 			end
 		end, 1.5)
 	end
+	
+	if (c == "WARRIOR" or c == "DRUID") and not self.aoetaunt then
+		self:ScheduleEvent("oRAPCoolDown_AOETauntCheck", 
+			function() 
+				local i = 1
+				local spellName, start, duration, timeleft
+				while true do 
+					spellName = GetSpellName(i, BOOKTYPE_SPELL)
+					if spellName then
+						if spellName == BS["Challenging Shout"] or spellName == BS["Challenging Roar"] then 
+							start, duration = GetSpellCooldown(i, BOOKTYPE_SPELL);
+							timeleft = duration - (GetTime() - start)
+							if timeleft > 500 and not self.aoetaunt then
+								self:SendMessage("CD 7 " .. timeleft)
+								self.aoetaunt = true
+								self:ScheduleEvent("oRAPCoolDown_ResetAOETaunt", 
+									function() 
+										self.aoetaunt = nil 
+									end, 
+									timeleft
+								)
+							end
+							break
+						end
+					else
+						break
+					end
+					i = i + 1
+				end
+			end, 
+			1.5
+		)
+	end
 end
 
 function oRAPCoolDown:SpellFailed()
@@ -189,6 +227,13 @@ function oRAPCoolDown:CheckSoulstone( arg1 )
 		end
 	end
 end
+
+function oRAPCoolDown:CheckShieldWall(arg1)
+	if string.find(arg1, L["You gain Shield Wall"]) then
+		self:SendMessage("CD 6 30")
+	end
+end
+
 
 ---------------
 --   Hooks   --

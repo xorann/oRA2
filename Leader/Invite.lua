@@ -18,6 +18,7 @@ L:RegisterTranslations("enUS", function() return {
 	["<oRA> Sorry, the group is full."] = true,
 	["Inviting: "] = true,
 	["^([^%s]+) has joined the raid group"] = true,
+	["You are now the group leader."] = true,
 	["Autopromoting: "] = true,
 	["Keyword inviting disabled."] = true,
 	["Invitation keyword set to: "] = true,
@@ -88,6 +89,7 @@ L:RegisterTranslations("deDE", function() return {
 	["<oRA> Sorry, the group is full."] = "<oRA> Sorry, die Gruppe ist voll",
 	["Inviting: "] = "Einladen: ",
 	["^([^%s]+) has joined the raid group"] = "^([^%s]+) hat sich der Schlachtgruppe angeschlossen",
+	["You are now the group leader."] = "Ihr seid jetzt der Gruppenanführer.",
 	["Autopromoting: "] = "Autobef\195\182rderung: ",
 	["Keyword inviting disabled."] = "Passwort Einladungen deaktiviert.",
 	["Invitation keyword set to: "] = "Einladungs-Passwort gesetzt auf: ",
@@ -384,17 +386,38 @@ function oRALInvite:CHAT_MSG_WHISPER( msg, author )
 		end
 	end
 end
-	
-function oRALInvite:CHAT_MSG_SYSTEM( msg )
+
+function oRALInvite:AutoPromote(name)
+	if name and IsRaidLeader() then
+		name = string.lower(name)
+		if self.db.profile.promotes[name] then
+			self:Print(L["Autopromoting: "] .. name)
+			PromoteToAssistant(name)
+		end
+	end
+end
+function oRALInvite:AutoPromoteAll()
+	if IsRaidLeader() then
+		for i = 1, GetNumRaidMembers(), 1 do
+			local name = GetRaidRosterInfo(i)
+			oRALInvite:AutoPromote(name)
+		end
+	end
+end
+function oRALInvite:CHAT_MSG_SYSTEM(msg)
 	if UnitInRaid("player") and IsRaidLeader() then
 		local _,_,name = string.find( msg, L["^([^%s]+) has joined the raid group"])
-		if name then
+		--[[if name then
 			name = strlower(name)
 			if self.db.profile.promotes[name] then
 				self:Print( L["Autopromoting: "] .. name )
 				self:ScheduleEvent( PromoteToAssistant, 2, name )
 			end
-		end
+		end]]
+		oRALInvite:AutoPromote(name)
+	end
+	if string.find( msg, L["You are now the group leader."]) then
+		oRALInvite:AutoPromoteAll()
 	end
 end
 

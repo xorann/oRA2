@@ -297,6 +297,8 @@ function oRA:AceEvent_FullyInitialized()
 		else
 			self:TriggerEvent("oRA_LeftRaid")
 		end
+		
+		self:ScheduleEvent(oRALInvite.AutoPromoteAll, 2)
 	else
 		self:ToggleActive(false)
 	end

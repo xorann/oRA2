@@ -22,6 +22,63 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle"] = true,
 	["toggle"] = true,
 	["Toggle the CoolDown Monitor."] = true,
+	
+	["rebirth"] = true,
+	["Rebirth"] = true,
+	["Show Rebirth."] = true,
+	["reincarnation"] = true,
+	["Reincarnation"] = true,
+	["Show Reincarnation."] = true,
+	["soulstone"] = true,
+	["Soulstone"] = true,
+	["Show Soulstone."] = true,
+	["divineintervention"] = true,
+	["Divine Intervention"] = true,
+	["Show Divine Intervention."] = true,
+
+	["innervate"] = true,
+	["Innervate"] = true,
+	["Show Innervate."] = true,
+	["shieldwall"] = true,
+	["Shield Wall"] = true,
+	["Show Shield Wall."] = true,
+	["aoetaunt"] = true,
+	["Aoe Taunt"] = true,
+	["Show Aoe Taunt."] = true,
+} end )
+
+L:RegisterTranslations("deDE", function() return {
+	["CoolDown Monitor"] = "Cooldown Anzeige",
+	["cooldown"] = "cooldown",
+	["cooldownoptional"] = true,
+	["Optional/CoolDown"] = "Optional/Cooldown",
+	["Options for CoolDown."] = "Optionen für Cooldowns",
+	["Toggle"] = "Umschalten",
+	["toggle"] = "umschalten",
+	["Toggle the CoolDown Monitor."] = "Ein-/Ausblenden der Cooldown Anzeige",
+	
+	["rebirth"] = true,
+	["Rebirth"] = true,
+	["Show Rebirth."] = true,
+	["reincarnation"] = true,
+	["Reincarnation"] = true,
+	["Show Reincarnation."] = true,
+	["soulstone"] = true,
+	["Soulstone"] = true,
+	["Show Soulstone."] = true,
+	["divineintervention"] = true,
+	["Divine Intervention"] = true,
+	["Show Divine Intervention."] = true,
+
+	["innervate"] = true,
+	["Innervate"] = true,
+	["Show Innervate."] = true,
+	["shieldwall"] = true,
+	["Shield Wall"] = true,
+	["Show Shield Wall."] = true,
+	["aoetaunt"] = true,
+	["Aoe Taunt"] = true,
+	["Show Aoe Taunt."] = true,
 } end )
 
 L:RegisterTranslations("ruRU", function() return {
@@ -81,6 +138,14 @@ oRAOCoolDown = oRA:NewModule(L["cooldownoptional"], "CandyBar-2.0")
 oRAOCoolDown.defaults = {
 	hidden = false,
 	cooldowns = {},
+	
+	rebirth = true,
+	reincarnation = true,
+	soulstone = true,
+	divineintervention = true,
+	innervate = true,
+	shieldwall = true,
+	aoetaunt = true,
 }
 oRAOCoolDown.optional = true
 oRAOCoolDown.name = L["Optional/CoolDown"]
@@ -93,10 +158,70 @@ oRAOCoolDown.consoleOptions = {
 		[L["toggle"]] = {
 			type = "toggle", name = L["Toggle"],
 			desc = L["Toggle the CoolDown Monitor."],
+			order = 1,
 			get = function() return not oRAOCoolDown.db.profile.hidden end,
 			set = function(v)
 					oRAOCoolDown:ToggleView()
 			end,
+		},
+		spacer = {
+			type = "header",
+			name = " ",
+			order = 2,
+		},
+		[L["rebirth"]] = {
+			type = "toggle", name = L["Rebirth"],
+			desc = L["Show Rebirth."],
+			order = 3,
+			get = function() return oRAOCoolDown.db.profile.rebirth end,
+			set = function(v) oRAOCoolDown.db.profile.rebirth = v end,
+		},
+		[L["reincarnation"]] = {
+			type = "toggle", name = L["Reincarnation"],
+			desc = L["Show Reincarnation."],
+			order = 4,
+			get = function() return oRAOCoolDown.db.profile.reincarnation end,
+			set = function(v) oRAOCoolDown.db.profile.reincarnation = v end,
+		},
+		[L["soulstone"]] = {
+			type = "toggle", name = L["Soulstone"],
+			desc = L["Show Soulstone."],
+			order = 5,
+			get = function() return oRAOCoolDown.db.profile.soulstone end,
+			set = function(v) oRAOCoolDown.db.profile.soulstone = v end,
+		},
+		[L["divineintervention"]] = {
+			type = "toggle", name = L["Divine Intervention"],
+			desc = L["Show Divine Intervention."],
+			order = 6,
+			get = function() return oRAOCoolDown.db.profile.divineintervention end,
+			set = function(v) oRAOCoolDown.db.profile.divineintervention = v end,
+		},
+		spacer = {
+			type = "header",
+			name = " ",
+			order = 2,
+		},
+		[L["innervate"]] = {
+			type = "toggle", name = L["Innervate"],
+			desc = L["Show Innervate."],
+			order = 11,
+			get = function() return oRAOCoolDown.db.profile.innervate end,
+			set = function(v) oRAOCoolDown.db.profile.innervate = v end,
+		},
+		[L["shieldwall"]] = {
+			type = "toggle", name = L["Shield Wall"],
+			desc = L["Show Shield Wall."],
+			order = 12,
+			get = function() return oRAOCoolDown.db.profile.shieldwall end,
+			set = function(v) oRAOCoolDown.db.profile.shieldwall = v end,
+		},
+		[L["aoetaunt"]] = {
+			type = "toggle", name = L["Aoe Taunt"],
+			desc = L["Show Aoe Taunt."],
+			order = 13,
+			get = function() return oRAOCoolDown.db.profile.aoetaunt end,
+			set = function(v) oRAOCoolDown.db.profile.aoetaunt = v end,
 		},
 	}
 }
@@ -147,18 +272,29 @@ function oRAOCoolDown:oRA_CoolDown(msg, author)
 	local _,_,_,_,deci = string.find( msg, "^CD (%d+) (%d+).(%d+)");
 	if author and what and time then
 		if not self.db.profile.cooldowns then self.db.profile.cooldowns = {} end
-		if what == "5" then
-			author = "innervate_"..author
-			if deci then
-				self.db.profile.cooldowns[author] = time() + tonumber(length.."."..deci)
-				self:StartCoolDown( author, tonumber(length.."."..deci))
+		if (self.db.profile.rebirth and what == "1") or (self.db.profile.reincarnation and what == "2") or (self.db.profile.soulstone and what == "3") or (self.db.profile.divineintervention and what == "4") or (self.db.profile.innervate and what == "5") or (self.db.profile.shieldwall and what == "6") or (self.db.profile.aoetaunt and what == "7") then
+			if what == "5" then
+				author = "innervate_"..author
+				if deci then
+					self.db.profile.cooldowns[author] = time() + tonumber(length.."."..deci)
+					self:StartCoolDown( author, tonumber(length.."."..deci))
+				else
+					self.db.profile.cooldowns[author] = time() + tonumber(length)
+					self:StartCoolDown( author, tonumber(length))
+				end
+			elseif what == "7" then
+				author = "aoetaunt_"..author
+				if deci then
+					self.db.profile.cooldowns[author] = time() + tonumber(length.."."..deci)
+					self:StartCoolDown( author, tonumber(length.."."..deci))
+				else
+					self.db.profile.cooldowns[author] = time() + tonumber(length)
+					self:StartCoolDown( author, tonumber(length))
+				end
 			else
-				self.db.profile.cooldowns[author] = time() + tonumber(length)
-				self:StartCoolDown( author, tonumber(length))
+				self.db.profile.cooldowns[author] = time() + tonumber(length)*60
+				self:StartCoolDown( author, tonumber(length)*60)
 			end
-		else
-			self.db.profile.cooldowns[author] = time() + tonumber(length)*60
-			self:StartCoolDown( author, tonumber(length)*60)
 		end
 	end
 end
@@ -277,11 +413,14 @@ end
 
 function oRAOCoolDown:StartCoolDown( player, time )
 	if not self.enabled or self.db.profile.hidden then return end
-	local innervate = nil
+	local innervate, aoetaunt = nil, nil
 	local player2 = player
 	if string.find(player, "^innervate_") then
 		player = string.sub(player,11)
 		innervate = true
+	elseif string.find(player, "^aoetaunt_") then
+		player = string.sub(player,10)
+		aoetaunt = true
 	end
 	local unit = roster:GetUnitObjectFromName( player )
 	if not unit then return end
@@ -289,6 +428,8 @@ function oRAOCoolDown:StartCoolDown( player, time )
 	self:SetCandyBarGroupPoint("oRAOCoolDownGroup", "TOP", self.text, "BOTTOM", 0, -5 )
 	if innervate then
 		self:RegisterCandyBar( "oRAOCoolDown "..player2, time, player, nil, "Mage")
+	elseif aoetaunt then
+		self:RegisterCandyBar( "oRAOCoolDown "..player2, time, player, nil, "Red")
 	else
 		self:RegisterCandyBar( "oRAOCoolDown "..player2, time, player, nil, unit.class)
 	end
