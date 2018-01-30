@@ -32,7 +32,7 @@ L:RegisterTranslations("ruRU", function() return {
 L:RegisterTranslations("deDE", function() return {
 	["gain Soulstone Resurrection"] = "Ihr bekommt 'Seelenstein%-Auferstehung'",
 	["gains Soulstone Resurrection"] = "bekommt 'Seelenstein%-Auferstehung'",
-	["You gain Shield Wall"] = true, -- translation missing
+	["You gain Shield Wall"] = "Ihr bekommt Schildwall",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
