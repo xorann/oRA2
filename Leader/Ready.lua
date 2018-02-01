@@ -402,9 +402,9 @@ end
 
 function oRALReady:SetupFrames()
 	-- override default ready check
-	RaidFrameReadyCheckButton:SetScript('OnClick', function()
+	--[[RaidFrameReadyCheckButton:SetScript('OnClick', function()
 		oRALReady:PerformReadyCheck()
-    end)
+    end)]]
 
 	local f, t	
 

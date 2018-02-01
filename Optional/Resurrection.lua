@@ -19,6 +19,10 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle"] = true,
 	["toggle"] = true,
 	["Toggle the Resurrection Monitor."] = true,
+	
+	["lock"] = true,
+	["Lock"] = true,
+	["Lock the Resurrection Monitor."] = true,
 } end )
 
 L:RegisterTranslations("ruRU", function() return {
@@ -78,6 +82,7 @@ L:RegisterTranslations("frFR", function() return {
 oRAOResurrection = oRA:NewModule(L["resurrectionoptional"])
 oRAOResurrection.defaults = {
 	hidden = true,
+	locked = false,
 }
 oRAOResurrection.optional = true
 oRAOResurrection.name = L["Optional/Resurrection"]
@@ -90,11 +95,21 @@ oRAOResurrection.consoleOptions = {
 		[L["toggle"]] = {
 			type = "toggle", name = L["Toggle"],
 			desc = L["Toggle the Resurrection Monitor."],
+			order = 1,
 			get = function() return not oRAOResurrection.db.profile.hidden end,
 			set = function(v)
 				oRAOResurrection:ToggleView()
 			end,
-		}
+		},
+		[L["lock"]] = {
+			type = "toggle", name = L["Lock"],
+			desc = L["Lock the Resurrection Monitor."],
+			order = 2,
+			get = function() return oRAOResurrection.db.profile.locked end,
+			set = function(v)
+					oRAOResurrection:ToggleLock()
+			end,
+		},
 	}
 }
 
@@ -231,8 +246,15 @@ end
 function oRAOResurrection:SetupFrames()
 	if not self.resframe then
 		local resframe = CreateFrame("Frame", "oRAResurrectionFrame", UIParent)
-		resframe:EnableMouse(true)
-		resframe:SetMovable(true)
+		
+		if self.db.profile.locked then
+			resframe:EnableMouse(false)
+			resframe:SetMovable(false)
+		else
+			resframe:EnableMouse(true)
+			resframe:SetMovable(true)		
+		end
+		
 		resframe:RegisterForDrag("LeftButton")
 		resframe:SetScript("OnDragStart", function() if IsAltKeyDown() then self["resframe"]:StartMoving() end end)
 		resframe:SetScript("OnDragStop", function() self["resframe"]:StopMovingOrSizing() self:SavePosition() end)
@@ -254,7 +276,11 @@ function oRAOResurrection:SetupFrames()
 		title:SetJustifyH("CENTER")
 		title:SetWidth(160)
 		title:SetHeight(12)
-		title:Show()
+		if self.db.profile.locked then
+			title:Hide()
+		else
+			title:Show()
+		end
 		title:ClearAllPoints()
 		title:SetPoint("TOP", resframe, "TOP", 0, -5)
 
@@ -307,3 +333,20 @@ function oRAOResurrection:ToggleView()
 	end
 end
 
+function oRAOResurrection:ToggleLock()
+	self.db.profile.locked = not self.db.profile.locked
+	
+	if not self.title then 
+		self:SetupFrames() 
+	end
+		
+	if self.db.profile.locked then
+		self.title:Hide()		
+		self.resframe:EnableMouse(false)
+		self.resframe:SetMovable(false)
+	else		
+		self.title:Show()		
+		self.resframe:EnableMouse(true)
+		self.resframe:SetMovable(true)
+	end
+end

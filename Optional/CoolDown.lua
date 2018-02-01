@@ -23,6 +23,14 @@ L:RegisterTranslations("enUS", function() return {
 	["toggle"] = true,
 	["Toggle the CoolDown Monitor."] = true,
 	
+	["scale"] = true,
+	["Bar scale"] = true,
+	["Set the bar scale."] = true,
+	
+	["lock"] = true,
+	["Lock"] = true,
+	["Lock the CoolDown Monitor."] = true,
+	
 	["rebirth"] = true,
 	["Rebirth"] = true,
 	["Show Rebirth."] = true,
@@ -137,6 +145,8 @@ L:RegisterTranslations("frFR", function() return {
 oRAOCoolDown = oRA:NewModule(L["cooldownoptional"], "CandyBar-2.0")
 oRAOCoolDown.defaults = {
 	hidden = false,
+	locked = false,
+	scale = 1.0,
 	cooldowns = {},
 	
 	rebirth = true,
@@ -164,72 +174,92 @@ oRAOCoolDown.consoleOptions = {
 					oRAOCoolDown:ToggleView()
 			end,
 		},
+		[L["lock"]] = {
+			type = "toggle", name = L["Lock"],
+			desc = L["Lock the CoolDown Monitor."],
+			order = 2,
+			get = function() return oRAOCoolDown.db.profile.locked end,
+			set = function(v)
+					oRAOCoolDown:ToggleLock()
+			end,
+		},
+		[L["scale"]] = {
+			type = "range",
+			name = L["Bar scale"],
+			desc = L["Set the bar scale."],
+			order = 3,
+			min = 0.2,
+			max = 2.0,
+			step = 0.1,
+			get = function() return oRAOCoolDown.db.profile.scale end,
+			set = function(v) oRAOCoolDown.db.profile.scale = v end,
+		},
 		spacer = {
 			type = "header",
-			name = " ",
-			order = 2,
+			name = "  ",
+			order = 4,
 		},
 		[L["rebirth"]] = {
 			type = "toggle", name = L["Rebirth"],
 			desc = L["Show Rebirth."],
-			order = 3,
+			order = 11,
 			get = function() return oRAOCoolDown.db.profile.rebirth end,
 			set = function(v) oRAOCoolDown.db.profile.rebirth = v end,
 		},
 		[L["reincarnation"]] = {
 			type = "toggle", name = L["Reincarnation"],
 			desc = L["Show Reincarnation."],
-			order = 4,
+			order = 12,
 			get = function() return oRAOCoolDown.db.profile.reincarnation end,
 			set = function(v) oRAOCoolDown.db.profile.reincarnation = v end,
 		},
 		[L["soulstone"]] = {
 			type = "toggle", name = L["Soulstone"],
 			desc = L["Show Soulstone."],
-			order = 5,
+			order = 13,
 			get = function() return oRAOCoolDown.db.profile.soulstone end,
 			set = function(v) oRAOCoolDown.db.profile.soulstone = v end,
 		},
 		[L["divineintervention"]] = {
 			type = "toggle", name = L["Divine Intervention"],
 			desc = L["Show Divine Intervention."],
-			order = 6,
+			order = 14,
 			get = function() return oRAOCoolDown.db.profile.divineintervention end,
 			set = function(v) oRAOCoolDown.db.profile.divineintervention = v end,
 		},
 		spacer = {
 			type = "header",
 			name = " ",
-			order = 2,
+			order = 15,
 		},
 		[L["innervate"]] = {
 			type = "toggle", name = L["Innervate"],
 			desc = L["Show Innervate."],
-			order = 11,
+			order = 21,
 			get = function() return oRAOCoolDown.db.profile.innervate end,
 			set = function(v) oRAOCoolDown.db.profile.innervate = v end,
 		},
 		[L["shieldwall"]] = {
 			type = "toggle", name = L["Shield Wall"],
 			desc = L["Show Shield Wall."],
-			order = 12,
+			order = 22,
 			get = function() return oRAOCoolDown.db.profile.shieldwall end,
 			set = function(v) oRAOCoolDown.db.profile.shieldwall = v end,
 		},
 		[L["aoetaunt"]] = {
 			type = "toggle", name = L["Aoe Taunt"],
 			desc = L["Show Aoe Taunt."],
-			order = 13,
+			order = 23,
 			get = function() return oRAOCoolDown.db.profile.aoetaunt end,
 			set = function(v) oRAOCoolDown.db.profile.aoetaunt = v end,
 		},
 	}
 }
 
+
 ------------------------------
 --      Initialization      --
 ------------------------------
-
 function oRAOCoolDown:OnEnable()
 	roster:Enable()
 	if not self.db.profile.cooldowns then self.db.profile.cooldowns = {} end
@@ -249,7 +279,6 @@ end
 ------------------------
 --   Event Handlers   --
 ------------------------
-
 function oRAOCoolDown:oRA_JoinedRaid()
 	if not self.enabled then
 		self.enabled = true
@@ -345,10 +374,17 @@ end
 function oRAOCoolDown:SetupFrames()
 	if not self.cdframe then
 		local cdframe = CreateFrame("Frame", "oRACoolDownFrame", UIParent)
-		cdframe:EnableMouse(true)
-		cdframe:SetMovable(true)
+		
+		if self.db.profile.locked then
+			cdframe:EnableMouse(false)
+			cdframe:SetMovable(false)
+		else
+			cdframe:EnableMouse(true)
+			cdframe:SetMovable(true)		
+		end
+		
 		cdframe:RegisterForDrag("LeftButton")
-		cdframe:SetScript("OnDragStart", function() if IsAltKeyDown() then self["cdframe"]:StartMoving() end end)
+		cdframe:SetScript("OnDragStart", function() self["cdframe"]:StartMoving() end)
 		cdframe:SetScript("OnDragStop", function() self["cdframe"]:StopMovingOrSizing() self:SavePosition() end)
 		cdframe:SetWidth(175)
 		cdframe:SetHeight(50)
@@ -368,7 +404,11 @@ function oRAOCoolDown:SetupFrames()
 		title:SetJustifyH("CENTER")
 		title:SetWidth(160)
 		title:SetHeight(12)
-		title:Show()
+		if self.db.profile.locked then
+			title:Hide()
+		else
+			title:Show()
+		end
 		title:ClearAllPoints()
 		title:SetPoint("TOP", cdframe, "TOP", 0, -5)
 
@@ -437,6 +477,9 @@ function oRAOCoolDown:StartCoolDown( player, time )
 	self:SetCandyBarWidth( "oRAOCoolDown "..player2, 150)
 	self:SetCandyBarTexture( "oRAOCoolDown "..player2, surface:Fetch(self.core.db.profile.bartexture))
 	self:StartCandyBar( "oRAOCoolDown "..player2, true)
+	
+	local scale = self.db.profile.scale or 1
+	self:SetCandyBarScale("oRAOCoolDown " .. player2, scale)
 end
 
 function oRAOCoolDown:StopCoolDown( player )
@@ -447,7 +490,6 @@ end
 -------------------------
 --  Command Handlers   --
 -------------------------
-
 function oRAOCoolDown:ToggleView()
 	self.db.profile.hidden = not self.db.profile.hidden
 	if self.cdframe and self.cdframe:IsVisible() then
@@ -458,5 +500,23 @@ function oRAOCoolDown:ToggleView()
 		if not self.cdframe then self:SetupFrames() end
 		self.cdframe:Show()
 		self:StartAllCoolDowns()
+	end
+end
+
+function oRAOCoolDown:ToggleLock()
+	self.db.profile.locked = not self.db.profile.locked
+	
+	if not self.title then 
+		self:SetupFrames() 
+	end
+		
+	if self.db.profile.locked then
+		self.title:Hide()		
+		self.cdframe:EnableMouse(false)
+		self.cdframe:SetMovable(false)
+	else		
+		self.title:Show()		
+		self.cdframe:EnableMouse(true)
+		self.cdframe:SetMovable(true)
 	end
 end
