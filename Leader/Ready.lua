@@ -401,6 +401,11 @@ end
 
 
 function oRALReady:SetupFrames()
+	-- override default ready check
+	RaidFrameReadyCheckButton:SetScript('OnClick', function()
+		oRALReady:PerformReadyCheck()
+    end)
+
 	local f, t	
 
 	f, _, _ = GameFontNormal:GetFont()
