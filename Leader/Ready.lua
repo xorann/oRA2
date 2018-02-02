@@ -229,6 +229,7 @@ function oRALReady:OnEnable()
 	self:RegisterCheck("VOTEYES", "oRA_VoteYes")
 	self:RegisterCheck("VOTENO", "oRA_VoteNo")
 
+	self:RegisterShorthand("ready", function() self:PerformReadyCheck() end )
 	self:RegisterShorthand("raready", function() self:PerformReadyCheck() end )
 	self:RegisterShorthand("rar", function() self:PerformReadyCheck() end )
 	self:RegisterShorthand("ravote", function(vote) self:PerformVote(vote) end )
