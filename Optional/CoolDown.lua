@@ -192,7 +192,11 @@ oRAOCoolDown.consoleOptions = {
 			max = 2.0,
 			step = 0.1,
 			get = function() return oRAOCoolDown.db.profile.scale end,
-			set = function(v) oRAOCoolDown.db.profile.scale = v end,
+			set = function(v) 
+					oRAOCoolDown.db.profile.scale = v 
+					oRAOCoolDown:StopAllCoolDowns()
+					oRAOCoolDown:StartAllCoolDowns()
+				end,
 		},
 		spacer = {
 			type = "header",
@@ -226,11 +230,6 @@ oRAOCoolDown.consoleOptions = {
 			order = 14,
 			get = function() return oRAOCoolDown.db.profile.divineintervention end,
 			set = function(v) oRAOCoolDown.db.profile.divineintervention = v end,
-		},
-		spacer = {
-			type = "header",
-			name = " ",
-			order = 15,
 		},
 		[L["innervate"]] = {
 			type = "toggle", name = L["Innervate"],

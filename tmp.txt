@@ -1,0 +1,72 @@
+get the 4 healers with the lowest mana percentage (no shamans)
+swap all into 1 group
+use mana tide
+wait X seconds
+restore groups
+
+BigWigs.server = {
+		["Classic-WoW"] = {
+			serverList = {
+				["Nefarian"] = true
+			},
+			supportedBosses = {
+				["The Twin Emperors"] = true, -- modulename
+				["C'Thun"] = true
+			}
+		}
+	}
+
+function getHealerList()
+	local list = {}
+	local num = GetNumRaidMembers()
+	for i = 1, num do
+		local raidUnit = string.format("raid%s", i)
+		local _, class = UnitClass(raidUnit)
+		if UnitExists(raidUnit) 
+			and CheckInteractDistance(raidUnit, 4) -- 28y
+			and (class == "Druid" or class == "Priest") then
+			
+			list[i] = UnitMana(raidUnit)
+		end
+	end
+	
+	-- sort
+	local tmp = {}
+	for n in pairs(list) do 
+		table.insert(tmp, n)
+	end
+	table.sort(tmp)
+	
+	local result = {}
+	for i, mana in pairs(tmp) do
+		table.insert(result, i)
+	end
+	
+	return result
+end
+
+local restoreList = nil
+function swapGroups(list)
+	restoreList = {}
+
+	local num = GetNumRaidMembers()
+	for i = 1, num do
+        local ignore = false
+		for key, n in pairs(list) do
+			if n == i then
+				ignore = true
+				break
+			end
+		end
+		if ignore then
+			continue
+		end
+		
+		local name, _, subgroup = GetRaidRosterInfo(i)
+		if subgroup == 8 then
+			SwapRaidSubgroup(i, switcherId)
+		end
+	end
+end
+
+

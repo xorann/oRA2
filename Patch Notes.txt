@@ -1,0 +1,16 @@
+r20001:
+	Cooldown Monitor:
+		- Added Innervate, Divine Intervention, Shield Wall and Challenging Shout/Roar
+		- Added configuration for each Spell
+		- Added an option to lock the Frame. If the frame is unlocked in can be moved by Drag&Drop (pressing you Alt-key is not necessary anymore)
+		- Added an option to scale the bar size
+
+	Ressurection Monitor
+		- Added an option to lock the Frame. If the frame is unlocked in can be moved by Drag&Drop (pressing you Alt-key is not necessary anymore)
+		
+	Invite:
+		- Added AutoPromote Feature: automatically promotes all players on your AutoPromote list to raid assistants whenever you become the raid leader or when you already are the raid leader and they join the raid
+		- Added the possibility to define multiple keywords for AutoInvite. Separate your keywords with a Space, e.g. "inv raid" would mean whenever someone whispers you "inv" or "raid", you would automatically invite them.
+		
+	Ready Check:
+		- Added Slashcommand /ready to perform a ready check
