@@ -152,7 +152,7 @@ oRA.defaults = {
 	bartexture = "BantoBar",
 	useshorthands = true,
 }
-oRA.version = tonumber(string.sub("$Revision: 17957 $", 12, -3))
+oRA.version = 20001
 oRA.CTRAversion = CTRAversion
 oRA.consoleOptions = {
 		type	= "group",
