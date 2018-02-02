@@ -372,7 +372,7 @@ end
 ----------------------
 
 function oRALInvite:CHAT_MSG_WHISPER( msg, author )
-	if self.db.profile.keyword and strlower(msg) == strlower(self.db.profile.keyword) then
+	if self.db.profile.keyword and oRALInvite:CheckForInviteRequest(msg) then
 		if GetNumPartyMembers() == 4 and GetNumRaidMembers() == 0 then ConvertToRaid() end
 		if GetNumRaidMembers() == 40 then
 			SendChatMessage( L["<oRA> Sorry, the group is full."], "WHISPER", nil, author)
@@ -553,3 +553,20 @@ function oRALInvite:IsEmpty( t )
 	return true
 end
 
+function oRALInvite:CheckForInviteRequest(msg, name)
+	for keyword in string.gmatch(self.db.profile.keyword, "%S+") do
+		if oRALInvite:ContainsWholeWord(strlower(msg), strlower(keyword)) then
+			return true
+		end
+	end
+	return false
+end
+
+function oRALInvite:ContainsWholeWord(input, word)
+	if not string.find(input, "%f[%a]" .. word .. "%f[%A]") then
+		return false
+	else
+		return true
+	end
+	--return string.find(input, "%f[%a]" .. word .. "%f[%A]")
+end
