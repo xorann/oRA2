@@ -554,9 +554,15 @@ function oRALInvite:IsEmpty( t )
 end
 
 function oRALInvite:CheckForInviteRequest(msg, name)
-	for keyword in string.gmatch(self.db.profile.keyword, "%S+") do
-		if oRALInvite:ContainsWholeWord(strlower(msg), strlower(keyword)) then
-			return true
+	if self.db.profile.keyword then		
+		local start, ending, keyword = 0, 0, nil
+		while(string.find(self.db.profile.keyword, "(%S+)", start))
+		do
+			start, ending, keyword = string.find(self.db.profile.keyword, "(%S+)", start)
+			if oRALInvite:ContainsWholeWord(strlower(msg), strlower(keyword)) then
+				return true
+			end
+			start = ending + 1
 		end
 	end
 	return false
