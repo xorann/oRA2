@@ -6,6 +6,7 @@ assert( oRA, "oRA not found!")
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRALReady")
+local readyCheckInProgress = false
 
 ----------------------------
 --      Localization      --
@@ -27,17 +28,18 @@ L:RegisterTranslations("enUS", function() return {
 	["check"] = true,
 	["Perform a ready check."] = true,
 	["Close"] = true,
-	["<CTRaid> %s has performed a ready check."] = true,
+	["<oRA> %s has performed a ready check."] = true,
 	["AFK: "] = true,
 	["Not Ready: "] = true,
 	["Yes: %d No: %d AFK: %d"] = true,
 	["Vote Results for: "] = true,
-	["<CTRaid> %s has performed a vote: %s"] = true,
+	["<oRA> %s has performed a vote: %s"] = true,
 	["Vote"] = true,
 	["vote"] = true,
 	["Perform a vote."] = true,
 	["<vote>"] = true,
 	["Leader/Ready"] = true,
+	["<oRA> Whisper me + or - (ready/not ready) if you did not receive a ready check."] = true,
 } end)
 
 L:RegisterTranslations("ruRU", function() return {
@@ -52,12 +54,12 @@ L:RegisterTranslations("ruRU", function() return {
 	["Ready Check"] = "Проверка готовности",
 	["Perform a ready check."] = "Проведение проверки готовности.",
 	["Close"] = "Закрыть",
-	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s проводит проверку готовности.",
+	["<oRA> %s has performed a ready check."] = "<oRA> %s проводит проверку готовности.",
 	["AFK: "] = "АФК: ",
 	["Not Ready: "] = "Не готовы: ",
 	["Yes: %d No: %d AFK: %d"] = "Да: %d Нет: %d АФК: %d",
 	["Vote Results for: "] = "Результаты голосования для: ",
-	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s проводит голосование.",
+	["<oRA> %s has performed a vote: %s"] = "<oRA> %s проводит голосование.",
 	["Vote"] = "Голосование",
 	["Perform a vote."] = "Проведение голосования.",
 	["<vote>"] = "<vote>",
@@ -77,12 +79,12 @@ L:RegisterTranslations("koKR", function() return {
 	["Ready Check"] = "준비 확인",
 	["Perform a ready check."] = "준비 상태를 확인 합니다.",
 	["Close"] = "닫기",
-	["<CTRaid> %s has performed a ready check."] = "<공격대 도우미> %s님이 준비 상태를 확인합니다.",
+	["<oRA> %s has performed a ready check."] = "<공격대 도우미> %s님이 준비 상태를 확인합니다.",
 	["AFK: "] = "자리비움: ",
 	["Not Ready: "] = "준비안됨: ",
 	["Yes: %d No: %d AFK: %d"] = "예: %d 아니오: %d 자리비움: %d",
 	["Vote Results for: "] = "투표 결과: ",
-	["<CTRaid> %s has performed a vote: %s"] = "<공격대 도우미> %s님이 투표를 실시합니다.: %s",
+	["<oRA> %s has performed a vote: %s"] = "<공격대 도우미> %s님이 투표를 실시합니다.: %s",
 	["Vote"] = "투표",
 	["Perform a vote."] = "투표를 실시합니다.",
 	["<vote>"] = "투표",
@@ -105,12 +107,12 @@ L:RegisterTranslations("zhCN", function() return {
 	["check"] = "检查",
 	["Perform a ready check."] = "进行检查",
 	["Close"] = "关闭",
-	["<CTRaid> %s has performed a ready check."] = "<CTRaid>%s正在进行就位检查",
+	["<oRA> %s has performed a ready check."] = "<oRA>%s正在进行就位检查",
 	["AFK: "] = "暂离: ",
 	["Not Ready: "] = "未就绪",
 	["Yes: %d No: %d AFK: %d"] = "是：%d 否：%d 暂离：%d",
 	["Vote Results for: "] = "投票结果：",
-	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid>%s开始一场投票：%s",
+	["<oRA> %s has performed a vote: %s"] = "<oRA>%s开始一场投票：%s",
 	["Vote"] = "投票",
 	["vote"] = "投票",
 	["Perform a vote."] = "进行投票",
@@ -134,12 +136,12 @@ L:RegisterTranslations("zhTW", function() return {
 	["check"] = "檢查",
 	["Perform a ready check."] = "進行就位確認",
 	["Close"] = "關閉",
-	["<CTRaid> %s has performed a ready check."] = "<CTRaid>%s正在進行就位確認",
+	["<oRA> %s has performed a ready check."] = "<oRA>%s正在進行就位確認",
 	["AFK: "] = "暫離: ",
 	["Not Ready: "] = "未就緒",
 	["Yes: %d No: %d AFK: %d"] = "是：%d 否：%d 暫離：%d",
 	["Vote Results for: "] = "投票結果：",
-	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid>%s開始一場投票：%s",
+	["<oRA> %s has performed a vote: %s"] = "<oRA>%s開始一場投票：%s",
 	["Vote"] = "投票",
 	["vote"] = "投票",
 	["Perform a vote."] = "進行投票",
@@ -163,12 +165,12 @@ L:RegisterTranslations("frFR", function() return {
 	--["check"] = true,
 	["Perform a ready check."] = "Effectue l'appel.",
 	["Close"] = "Fermer",
-	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s a commenc\195\169 l'appel.",
+	["<oRA> %s has performed a ready check."] = "<oRA> %s a commenc\195\169 l'appel.",
 	["AFK: "] = "ABS : ",
 	["Not Ready: "] = "Pas pr\195\170t : ",
 	["Yes: %d No: %d AFK: %d"] = "Oui : %d Non : %d ABS : %d",
 	["Vote Results for: "] = "R\195\169sultat du vote pour : ",
-	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s a lanc\195\169 un vote: %s",
+	["<oRA> %s has performed a vote: %s"] = "<oRA> %s a lanc\195\169 un vote: %s",
 	--["Vote"] = true,
 	--["vote"] = true,
 	["Perform a vote."] = "Soumet un vote au raid.",
@@ -224,6 +226,8 @@ function oRALReady:OnEnable()
 	self.votes = {}
 	self.ready = {}
 
+	self:RegisterEvent("CHAT_MSG_WHISPER")
+	
 	self:RegisterCheck("READY", "oRA_Ready")
 	self:RegisterCheck("NOTREADY", "oRA_NotReady")
 	self:RegisterCheck("VOTEYES", "oRA_VoteYes")
@@ -285,8 +289,12 @@ function oRALReady:PerformReadyCheck()
 	self.frames.report:Show()
 	self:UpdateReport(self.ready, "ready", "not ready")
 
-	SendChatMessage(string.format( L["<CTRaid> %s has performed a ready check."], name), "RAID")
-	self:SendMessage("CHECKREADY")	
+	SendChatMessage(string.format( L["<oRA> %s has performed a ready check."], name), "RAID")
+	SendChatMessage(L["<oRA> Whisper me + or - (ready/not ready) if you did not receive a ready check."], "RAID")
+	
+	self:SendMessage("CHECKREADY")
+	
+	readyCheckInProgress = true
 end
 
 function oRALReady:PerformVote( question )
@@ -315,13 +323,39 @@ function oRALReady:PerformVote( question )
 
 	self.frames.report:Show()
 	self:UpdateReport(self.votes, "yes", "no")
-	SendChatMessage(string.format( L["<CTRaid> %s has performed a vote: %s"], UnitName("player"), question), "RAID")
+	SendChatMessage(string.format( L["<oRA> %s has performed a vote: %s"], UnitName("player"), question), "RAID")
 	self:SendMessage("VOTE "..question)
 end
 
 -------------------------
 --   Event Handlers    --
 -------------------------
+
+local function IsRaidMember(name)
+	if name then
+		for i = 1, GetNumRaidMembers(), 1 do
+			local unitName = GetRaidRosterInfo(i)
+			if name == unitName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+function oRALReady:CHAT_MSG_WHISPER(msg, author)
+	BigWigs:Print(msg .. " " .. author)
+	if readyCheckInProgress then
+		if IsRaidMember(author) then
+			if msg == "+" then
+				oRALReady:oRA_Ready(msg, author)
+			elseif msg == "-" then
+				oRALReady:oRA_NotReady(msg, author)
+			end
+		end
+	end
+end
 
 function oRALReady:oRA_Ready(msg, author)
 	if not self:IsPromoted() then return end
@@ -360,6 +394,8 @@ function oRALReady:ReportReadyStatus()
 	end
 	if noreply ~= "" then self:Print(L["AFK: "]..noreply) end
 	if notready ~= "" then self:Print(L["Not Ready: "]..notready) end
+	
+	readyCheckInProgress = false
 end
 
 function oRALReady:ReportVoteStatus()
