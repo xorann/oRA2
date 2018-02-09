@@ -6,7 +6,10 @@ assert( oRA, "oRA not found!")
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRALReady")
-local readyCheckInProgress = false
+local checkInProgress = false
+local raidSize = nil
+local reportType = nil
+
 
 ----------------------------
 --      Localization      --
@@ -40,6 +43,8 @@ L:RegisterTranslations("enUS", function() return {
 	["<vote>"] = true,
 	["Leader/Ready"] = true,
 	["<oRA> Whisper me + or - (ready/not ready) if you did not receive a ready check."] = true,
+	["<oRA> Whisper me + or - (yes/no) if you did not receive a vote."] = true,
+	["Ready: %d, Not Ready: %d, AFK: %d"] = true,
 } end)
 
 L:RegisterTranslations("ruRU", function() return {
@@ -266,9 +271,14 @@ end
 function oRALReady:PerformReadyCheck()
 	if not self:IsPromoted() then return end
 	self.ready = {}
+	
+	raidSize = 0
 	for i = 1, GetNumRaidMembers(), 1 do
 		local name, rank, subgroup, level, class, fileName, zone, online, isDead = GetRaidRosterInfo(i)
-		if online then self.ready[name] = "no reply" end		
+		if online then 
+			self.ready[name] = "no reply" 
+		end
+		raidSize = i
 	end
 	
 	name = UnitName("player")
@@ -282,7 +292,7 @@ function oRALReady:PerformReadyCheck()
 
 	self.frames.closebutton:SetScript("OnClick",
 		function()
-			this.owner:ReportReadyStatus()
+			--this.owner:ReportReadyStatus()
 			this.owner.frames.report:Hide()
 		end )
  
@@ -294,7 +304,11 @@ function oRALReady:PerformReadyCheck()
 	
 	self:SendMessage("CHECKREADY")
 	
-	readyCheckInProgress = true
+	-- report status in 30s
+	--raidSize = GetNumRaidMembers()
+	reportType = "ready"
+	checkInProgress = true
+	self:ScheduleEvent("oRALReadyReportStatus", oRALReady.ReportStatus, 30, self)
 end
 
 function oRALReady:PerformVote( question )
@@ -304,9 +318,13 @@ function oRALReady:PerformVote( question )
 	self.question = question
 	self.votes = {}
 	
+	raidSize = 0
 	for i = 1, GetNumRaidMembers(), 1 do
 		local name, rank, subgroup, level, class, fileName, zone, online, isDead = GetRaidRosterInfo(i)
-		if online and name ~= UnitName("player") then self.votes[name] = "no reply" end
+		if online and name ~= UnitName("player") then 
+			self.votes[name] = "no reply" 
+			raidSize = i
+		end
 	end
 
 	self.frames.rheader:SetText(L["Vote"])
@@ -317,14 +335,22 @@ function oRALReady:PerformVote( question )
 
 	self.frames.closebutton:SetScript("OnClick",
 		function()
-			this.owner:ReportVoteStatus()
+			--this.owner:ReportVoteStatus()
 			this.owner.frames.report:Hide()
 		end )
 
 	self.frames.report:Show()
 	self:UpdateReport(self.votes, "yes", "no")
+	
 	SendChatMessage(string.format( L["<oRA> %s has performed a vote: %s"], UnitName("player"), question), "RAID")
+	SendChatMessage(L["<oRA> Whisper me + or - (yes/no) if you did not receive a vote."], "RAID")
+	
 	self:SendMessage("VOTE "..question)
+	
+	-- report status in 30s
+	reportType = "vote"
+	checkInProgress = true
+	self:ScheduleEvent("oRALReadyReportStatus", oRALReady.ReportStatus, 30, self)
 end
 
 -------------------------
@@ -345,13 +371,20 @@ local function IsRaidMember(name)
 end
 
 function oRALReady:CHAT_MSG_WHISPER(msg, author)
-	BigWigs:Print(msg .. " " .. author)
-	if readyCheckInProgress then
+	if checkInProgress then
 		if IsRaidMember(author) then
 			if msg == "+" then
-				oRALReady:oRA_Ready(msg, author)
+				if reportType == "ready" then
+					oRALReady:oRA_Ready(msg, author)
+				elseif reportType == "vote" then
+					oRALReady:oRA_VoteYes(msg, author)
+				end
 			elseif msg == "-" then
-				oRALReady:oRA_NotReady(msg, author)
+				if reportType == "ready" then
+					oRALReady:oRA_NotReady(msg, author)
+				elseif reportType == "vote" then
+					oRALReady:oRA_VoteNo(msg, author)
+				end
 			end
 		end
 	end
@@ -386,30 +419,59 @@ end
 --------------------------
 
 function oRALReady:ReportReadyStatus()
-	local noreply, notready = "", ""
-	for name, ready in pairs(self.ready) do
-		if ready == "no reply" then noreply = noreply..name.." "
-		elseif ready == "not ready" then notready = notready..name.." "
+	local ready, noreply, notready, nReady, nNoReply, nNotReady = "", "", "", 0, 0, 0
+	
+	for name, state in pairs(self.ready) do
+		if state == "ready" then
+			ready = ready .. name .. " "
+			nReady = nReady + 1
+		elseif state == "no reply" then 
+			noreply = noreply..name.." "
+			nNoReply = nNoReply + 1
+		elseif state == "not ready" then 
+			notready = notready..name.." "
+			nNotReady = nNotReady + 1
 		end
 	end
-	if noreply ~= "" then self:Print(L["AFK: "]..noreply) end
-	if notready ~= "" then self:Print(L["Not Ready: "]..notready) end
 	
-	readyCheckInProgress = false
+	if noreply ~= "" then 
+		self:Print(L["AFK: "]..noreply) 
+	end
+	
+	if notready ~= "" then 
+		self:Print(L["Not Ready: "]..notready) 
+	end
+	
+	SendChatMessage(string.format(L["Ready: %d, Not Ready: %d, AFK: %d"], nReady, nNotReady, nNoReply), "RAID")
 end
 
 function oRALReady:ReportVoteStatus()
-	local noreply, yes, no = 0,0,0
+	local noreply, yes, no = 0, 0, 0
+	
 	for name, vote in pairs(self.votes) do
-		if vote == "no reply" then noreply = noreply + 1
-		elseif vote == "no" then no = no + 1
-		else yes = yes + 1
+		if vote == "no reply" then 
+			noreply = noreply + 1
+		elseif vote == "no" then 
+			no = no + 1
+		else 
+			yes = yes + 1
 		end
 	end
-	SendChatMessage( L["Vote Results for: "]..self.question, "RAID")
-	SendChatMessage( string.format(L["Yes: %d No: %d AFK: %d"], yes, no, noreply), "RAID")
+	
+	SendChatMessage(L["Vote Results for: "] .. self.question, "RAID")
+	SendChatMessage(string.format(L["Yes: %d No: %d AFK: %d"], yes, no, noreply), "RAID")
 end
 
+function oRALReady:ReportStatus()
+	if reportType == "ready" then
+		oRALReady:ReportReadyStatus()
+	elseif reportType == "vote" then
+		oRALReady:ReportVoteStatus()
+	end
+	
+	self:CancelScheduledEvent("oRALReadyReportStatus")
+	checkInProgress = false
+end
 
 ------------------------------------
 --     Frame Setup and Handling   --
@@ -418,22 +480,28 @@ end
 
 function oRALReady:UpdateReport(t, green, red)
 	local text = ""
-	local i = 0
+	local i, replies = 0, 0
 	for name, state in pairs(t) do
-		i = i + 1
 		if i == 21 then text = "" end
+		i = i + 1
 		
 		if state == "no reply" then
 			text = text .. "|c00CCCCCC" .. name .. "|r\n"		
 		elseif state == red then
+			replies = replies + 1
 			text = text .. "|c00FF0000" .. name .. "|r\n"
 		else
+			replies = replies + 1
 			text = text .. "|c0000FF00" .. name .. "|r\n"
 		end
 		
 		if i <= 20 then self.frames.leftinfo:SetText(text)
 		else self.frames.rightinfo:SetText(text) end
-	end               
+	end
+
+	if replies == raidSize then
+		oRALReady:ReportStatus()
+	end
 end
 
 
