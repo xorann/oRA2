@@ -24,6 +24,8 @@ L:RegisterTranslations("enUS", function() return {
 	["Notify deaths"] = true,
 	["Notifies you when a main tank dies."] = true,
 	["Tank %s has died!"] = true,
+	["Test"] = true,
+	["Test the Maintank Frame."] = true,
 
 	maintankdies = "^([^%s]+) dies%.$",
 } end )
@@ -113,6 +115,8 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
     ["Tank %s has died!"] = "Tank %s ist gestorben!",
+	["Test"] = "Test",
+	["Test the Maintank Frame."] = "Teste die Maintankanzeige",
     maintankdies = "^([^%s]+) stirbt%.$",
 } end )
 
@@ -123,6 +127,7 @@ L:RegisterTranslations("deDE", function() return {
 oRAPMainTank = oRA:NewModule(L["maintank"])
 oRAPMainTank.defaults = {
 	notifydeath = false,
+	testing = false,
 }
 oRAPMainTank.participant = true
 oRAPMainTank.name = L["Participant/MainTank"]
@@ -145,6 +150,16 @@ oRAPMainTank.consoleOptions = {
 			desc = L["Notifies you when a main tank dies."],
 			get = function() return oRAPMainTank.db.profile.notifydeath end,
 			set = function(v) oRAPMainTank.db.profile.notifydeath = v end,
+		},
+		[L["Test"]] = {
+			name = L["Test"],
+			type = "toggle",
+			desc = L["Test the Maintank Frame."],
+			get = function() return oRAPMainTank.db.profile.testing end,
+			set = function(v) 
+				oRAPMainTank.db.profile.testing = v;
+				oRAPMainTank:Test();
+			end,
 		},
 	}
 }
@@ -250,4 +265,21 @@ end
 function oRAPMainTank:Refresh()
 	self:TriggerEvent("oRA_MainTankUpdate", self.core.maintanktable)
 	self:Print(L["The local maintank list has been refreshed."])
+end
+
+-------------------------------
+--      Test     --
+-------------------------------
+function oRAPMainTank:Test()
+	if self.db.profile.testing then
+		for i=1, 10 do
+			self.core.maintanktable[i] = UnitName("player")
+		end
+		--self.core:TriggerEvent("oRA_MainTankUpdate", self.core.maintanktable)
+		oRAPMainTank:Refresh()
+	else
+		oRAPMainTank:RemoveTank(UnitName("player"))
+		oRAPMainTank:Refresh()
+	end
+	--/run oRA.maintanktable[2]="Coyra";oRA:TriggerEvent("oRA_MainTankUpdate", oRA.maintanktable)
 end
