@@ -618,6 +618,10 @@ function oRAOMainTank:oRA_LeftRaid()
 end
 
 function oRAOMainTank:oRA_MainTankUpdate( maintanktable )
+	if not oRA:IsModuleActive(oRAOMainTank) then
+		return
+	end
+	
 	maintanktable = maintanktable or self.core.maintanktable
 	if not maintanktable then return end
 

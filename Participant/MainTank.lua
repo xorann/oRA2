@@ -129,6 +129,7 @@ oRAPMainTank.defaults = {
 	notifydeath = false,
 	testing = false,
 }
+
 oRAPMainTank.participant = true
 oRAPMainTank.name = L["Participant/MainTank"]
 oRAPMainTank.consoleCmd = L["mt"]
@@ -160,6 +161,7 @@ oRAPMainTank.consoleOptions = {
 				oRAPMainTank.db.profile.testing = v;
 				oRAPMainTank:Test();
 			end,
+			--disabled = function() return not oRA:IsModuleActive(oRAPMainTank) end,
 		},
 	}
 }
@@ -173,6 +175,8 @@ function oRAPMainTank:OnRegister()
 	if not self.core.maintanktable then
 		self.core.maintanktable = self.core.db.profile.maintanktable or {}
 	end
+	
+	oRAPMainTank.db.profile.testing = false
 end
 
 function oRAPMainTank:OnEnable()
@@ -271,6 +275,17 @@ end
 --      Test     --
 -------------------------------
 function oRAPMainTank:Test()
+	if not oRA:IsModuleActive(oRAPMainTank) then
+		local m = oRA:GetModule(L["maintank"])
+		oRA:ToggleModuleActive(m, true)
+		
+		m = oRA:GetModule("maintankoptional")
+		oRA:ToggleModuleActive(m, true)
+		
+		--m = oRA:GetModule("maintank")
+		--oRA:ToggleModuleActive(m, true)
+	end
+	
 	if self.db.profile.testing then
 		for i=1, 10 do
 			self.core.maintanktable[i] = UnitName("player")
