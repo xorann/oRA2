@@ -152,7 +152,7 @@ oRA.defaults = {
 	bartexture = "BantoBar",
 	useshorthands = true,
 }
-oRA.version = 20001
+oRA.version = 20002
 oRA.CTRAversion = CTRAversion
 oRA.consoleOptions = {
 		type	= "group",
