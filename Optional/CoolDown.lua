@@ -95,6 +95,30 @@ L:RegisterTranslations("ruRU", function() return {
 	["Options for CoolDown."] = "Опции для перезарядки.",
 	["Toggle"] = "Вкл./Выкл.",
 	["Toggle the CoolDown Monitor."] = "Вкл./Выкл. монитор перезарядки.",
+			
+	["scale"] = "Маштаб",
+	["Bar scale"] = "Маштаб полосок",
+	["Set the bar scale."] = "Установить маштаб полосок",
+			
+	["Lock"] = "Заблокировать",
+	["Lock the CoolDown Monitor."] = "Заблокировать монитор перезарядки",
+			
+	["Rebirth"] = "Возрождение",
+	["Show Rebirth."] = "Показать Возрождение.",
+	["Reincarnation"] = "Перерождение",
+	["Show Reincarnation."] = "Показать Перерождение",
+	["Soulstone"] = "Камень души",
+	["Show Soulstone."] = "Показать Камень души",
+	["Divine Intervention"] = "Божественное вмешательство",
+	["Show Divine Intervention."] = "Показать Божественное вмешательство",
+
+	["Innervate"] = "Озарение",
+	["Show Innervate."] = "Показать Озарение",
+	["Shield Wall"] = "Глухая оборона",
+	["Show Shield Wall."] = "Показать Глухая оборона",
+	["aoetaunt"] = "aoetaunt",
+	["Aoe Taunt"] = "АОЕ таунт",
+	["Show Aoe Taunt."] = "Показать АОЕ таунт.",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
