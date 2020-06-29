@@ -31,6 +31,9 @@ L:RegisterTranslations("ruRU", function() return {
 	["Options for resurrection."] = "Опции для воскрешения.",
 	["Toggle"] = "Вкл./Выкл.",
 	["Toggle the Resurrection Monitor."] = "Вкл./Выкл. монитор воскрешения.",
+			
+	["Lock"] = "Заблокировать",
+	["Lock the Resurrection Monitor."] = "Заблокировать монитор воскрешения.",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
