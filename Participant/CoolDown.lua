@@ -24,9 +24,10 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("ruRU", function() return {
 	["Options for cooldowns."] = "Опции для перезарядки.",
-	["gain Soulstone Resurrection"] = "gain Soulstone Resurrection",
-	["gains Soulstone Resurrection"] = "gains Soulstone Resurrection",
+	["gain Soulstone Resurrection"] = "получаете эффект \"Воскрешение камнем души\"", -- AURAADDEDSELFHELPFUL
+	["gains Soulstone Resurrection"] = "получает эффект \"Воскрешение камнем души\"", -- AURAADDEDOTHERHELPFUL
 	["Participant/CoolDown"] = "Участник/Перезарядка",
+	["You gain Shield Wall"] = "Вы получаете эффект \"Глухая оборона\"", -- AURAADDEDSELFHELPFUL
 } end )
 
 L:RegisterTranslations("deDE", function() return {
