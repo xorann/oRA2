@@ -66,7 +66,7 @@ L:RegisterTranslations("ruRU", function() return {
 	["All"] = "ВСЕХ",
 	["Delete all Maintanks"] = "Удаление всех MT.",
 	
-	["<Not Assigned>"] = "<Не назначено>",
+	["<Not Assigned>"] = "<Не назначен>",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
